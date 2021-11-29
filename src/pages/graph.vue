@@ -751,6 +751,7 @@ export default {
     async checkExistDB(selectKGDBName) {
       console.log(selectKGDBName);
       let res = await checkExistDBInter({
+        // name: "DBNAME",
         name: selectKGDBName,
         // 输入cid
         cid: "202111271003",
