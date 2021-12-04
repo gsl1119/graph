@@ -180,7 +180,8 @@ export default {
             _this.deleteGraphNode(data, callback);
           },
           deleteEdge(data,callback){
-            console.log(data);
+            // console.log(data);
+            _this.deleteGraphEdge(data,callback)
              callback(data);
           }
          
