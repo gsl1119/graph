@@ -5,8 +5,8 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '/graph', component: () => import('pages/graph.vue') },
-      { path: '/graph', component: () => import('pages/graph.vue') },
+      { path: '/graph', component: () => import('src/pages/Graph.vue') },
+      { path: '/graphBack', component: () => import('src/pages/graphBack.vue') },
       // { path: '/dashboard', component: () => import('pages/dashboard.vue') },
       // { path: '/dashboard_v2', component: () => import('pages/dashboard_v2.vue') },
       // { path: '/dashboard_v3', component: () => import('pages/dashboard_v3.vue') },

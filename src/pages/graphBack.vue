@@ -8,26 +8,36 @@
         </q-card-section>
 
         <q-card-section class="q-ptnone">
-          <q-input dense v-model="addKGDBName" autofocus></q-input>
+          <!-- 课程数据库的名字 -->
+          <q-input
+            dense
+            v-model="addKGDBName"
+            autofocus
+            :rules="[(val) => !!val || '空字段！']"
+          ></q-input>
         </q-card-section>
 
         <q-card-actions align="right" class="text-primary">
           <q-btn flat label="取消" v-close-popup></q-btn>
-          <q-btn flat label="添加" v-close-popup></q-btn>
+          <q-btn flat label="添加" type="submit" @click="addKGDB"></q-btn>
         </q-card-actions>
       </q-card>
     </q-dialog>
     <q-card flat bordered class="q-pa-sm q-ma-sm">
       <!-- 知识点搜索框 -->
       <q-card-section class="q-pa-xs row">
+        <!-- 选择是课程数据库的名称 -->
         <q-select
+          use-input
           class="col-3 q-mt-none"
           style="margin-top: -0rem"
           v-model="selectKGDBName"
-          :options="['DBNAME']"
+          @input="checkExistDB(selectKGDBName)"
+          :options="DBList"
           label="图谱名称"
         >
         </q-select>
+        <!-- 搜索知识点 -->
         <div class="GPLAY__toolbar-input-container row q-ma-md no-wrap col-5">
           <q-input
             dense
@@ -35,7 +45,7 @@
             square
             v-model="searchTerm"
             placeholder="请输入知识点"
-            @keyup.enter.native="handleSearchClike()"
+            @keydown="matchSearchByStr"
             class="bg-white col q-ma-none"
           />
           <q-btn
@@ -46,6 +56,15 @@
             style="height: 2.5rem"
           />
         </div>
+        <!-- <q-btn
+              color="secondary"
+              class="absolute-top-right"
+              icon="add"
+              size='1.3rem'
+              @click="addKGDBDialog = true"
+            > -->
+        <!-- <q-tooltip content-class="bg-accent">添加数据库</q-tooltip>
+              </q-btn> -->
       </q-card-section>
       <q-separator inset> </q-separator>
       <q-card-section class="q-pa-none q-ma-none">
@@ -92,13 +111,30 @@ import {
   editKG,
   fuzzFindRelterm,
   submitKgCode,
+  showDB,
+  createKGDB,
+  matchSearchss,
+  matchSearch,
+  findAllDBNameAndCName,
+  checkExistDBInter,
+  addADBInfoInter,
 } from "src/api/common/graph";
 import { Loading } from "quasar";
 export default {
   data() {
     let _this = this;
     return {
+      //上传数据库的名称（课程名的别名）（不是课程名）
+      uploadDBName: "",
+      // 模糊查询的字段
+      headword: "",
+      // 课程图谱数据库的名称
+      addKGDBName: "",
+      // 存储课程名称
+      DBList: [],
+      //控制添加课程数据库的对话框
       addKGDBDialog: false,
+      // 选择绑定的课程图谱数据库的名称
       selectKGDBName: "",
       nodeDigMode: "add",
       addNodeDig: false,
@@ -124,6 +160,7 @@ export default {
           initiallyActive: true,
           editEdge: {
             editWithoutDrag(data, callback) {
+              
               _this.addAndEditEdge(data, callback);
             },
           },
@@ -136,11 +173,17 @@ export default {
             _this.addAndEditGraphNode(data, callback);
           },
           addEdge(data, callback) {
+            
             _this.addAndEditEdge(data, callback);
           },
           deleteNode(data, callback) {
             _this.deleteGraphNode(data, callback);
           },
+          deleteEdge(data,callback){
+            console.log(data);
+             callback(data);
+          }
+         
         },
         edges: {
           width: 2,
@@ -279,11 +322,31 @@ export default {
     },
     //知识点后台查询
     async findConTerm(searchData) {
+      if (this.selectKGDBName == "") {
+        this.$q.notify({
+          message: `请选择数据库！`,
+          timeout: 300,
+          color: "negative",
+          icon: "error",
+          position: "bottom",
+        });
+      }
       const data = {
         userno: "2017416616",
         conterm: searchData,
+        dbname: "DBNAME",
       };
+
       let response = await editKG(data);
+      if (response.data.data.termid.length === 0) {
+        this.$q.notify({
+          message: `查询无果！`,
+          timeout: 300,
+          color: "negative",
+          icon: "error",
+          position: "bottom",
+        });
+      }
       return response.data.data;
     },
     // 边的编辑
@@ -339,26 +402,57 @@ export default {
           title: "请输入节点名称",
           prompt: {
             model: data.label === "new" ? "" : data.label,
-            type: "text", // optional
+            type: "text", // optioal
           },
           cancel: true,
           persistent: true,
         })
         .onOk((nodeName) => {
-          this.saveNodeData(nodeName, data, callback);
+          let arr = [];
+          this.nodes.forEach((el) => {
+            arr.push(el.label);
+          });
+          if (!arr.includes(nodeName) || this.nodes.length == 0) {
+            this.saveNodeData(nodeName, data, callback);
+          } else {
+            this.$q.notify({
+              message: `节点已经存在，请勿重复添加`,
+              timeout: 300,
+              color: "warning",
+              position: "bottom",
+            });
+            return;
+          }
         })
         .onCancel(() => {
           callback(null);
         })
         .onDismiss(() => {});
     },
+    //删除边
+    deleteGraphEdge(data,callback){
+      console.log(data);
+    },
     // 节点的删除
     deleteGraphNode(data, callback) {
+      let tempWStr = "";
+      for (let i = 0; i < this.nodes.length; i++) {
+        const item = this.nodes[i];
+        if (item.id === data.nodes[0]) {
+          tempWStr = tempWStr + "概念-=" + item.label + "\n";
+        }
+      }
       callback(data);
       this.nodes = this._network.body.data.nodes.get();
+
       this.edges = this._network.body.data.edges.get();
       this.graphTransToW(this.nodes, this.edges);
-      var node = this.filtIndividualNodes(this.node, this.edges);
+      this.wnorl = this.wnorl + "\n" + tempWStr;
+
+      // console.log(this.wnorl);
+      // this.wnorl = this.wnorl + '\n'+item.label
+      // console.log(this.wnorl);
+      // var node = this.filtIndividualNodes(this.node, this.edges);
     },
     // 本地保存节点数据
     saveNodeData(nodeName, data, callback) {
@@ -384,14 +478,28 @@ export default {
       } else {
         this.nodes.push({ id: id, label: nodeName });
         this.graphTransToW(this.nodes, this.edges);
-        this.wnorl = this.wnorl + data.label;
+        // this.wnorl = this.wnorl + data.label;
       }
 
       callback(data);
     },
     // 图谱转W语言（数据转换）
     graphTransToW(Nodes, Edges) {
+      let tempDeleteStr = "";
+      let tempWarr = this.wnorl.trim().split("\n");
+      for (let i = 0; i < tempWarr.length; i++) {
+        const item = tempWarr[i];
+        if (item.search("-=") !== -1) {
+          console.log(item);
+          tempDeleteStr = tempDeleteStr + item + "\n";
+        }
+      }
+
+      // -= += 分开
+
       // 数据转化为w语言的数组
+
+      // console.log(tempDeleteStr);
       var w = [];
       for (let i = 0; i < Edges.length; i++) {
         var source;
@@ -408,7 +516,6 @@ export default {
         }
         w.push(source + "." + rel + "+=" + target);
       }
-      //////////////////////////////////////////////////////////////
       // 将已有的单个的w语言组合为单个w语言（a.b=c;a.b=d  =>  a.b=c d）
       let wCopy = w;
       for (let i = 0; i < w.length; i++) {
@@ -423,7 +530,7 @@ export default {
           }
         }
       }
-      /////////////////////////////////////////////////////////////
+
       this.wArr = w;
       // console.log("++++++++++++++++++++");
       // console.log("当前的列表：" + w);
@@ -437,9 +544,19 @@ export default {
           this.wnorl = this.wnorl + this.wArr[i] + "\n";
         }
       }
+      this.wnorl = this.wnorl + tempDeleteStr;
     },
     // W语言转图谱（数据转换）
     wtransToGraph(warr) {
+      console.log(warr);
+      let delteWarr = [];
+      for (let i = 0; i < warr.length; i++) {
+        const item = warr[i];
+        if (item.search("-=") !== -1) {
+          delteWarr.push(item);
+          warr.splice(i, 1);
+        }
+      }
       var temp = [];
       var nodes = [];
       var edges = [];
@@ -495,6 +612,19 @@ export default {
       }
       this.nodes = nodes;
       this.edges = edges;
+      for (let i = 0; i < delteWarr.length; i++) {
+        const item = delteWarr[i];
+        // 删除节点
+        if (item.search("概念") !== -1) {
+          for (let j = 0; j < this.nodes.length; j++) {
+            const el = this.nodes[j];
+            if (el.label === item.split("-=")[1]) {
+              console.log(el);
+              this.nodes.splice(j, 1);
+            }
+          }
+        }
+      }
       return { nodes: nodes, edges: edges };
     },
     // 控制图谱与W语言实时更新
@@ -530,7 +660,6 @@ export default {
     // 查找连线的id
     findEdgeId(label, sNodeId, tNodeId) {
       let id = sNodeId + "-" + tNodeId + "-" + label;
-      console.log(id);
       // 查找到了就赋值
       this.edges.forEach((element) => {
         if (
@@ -545,7 +674,7 @@ export default {
       return id;
     },
     // 整个图谱数据往服务器上传
-    upload() {
+    async upload() {
       var text = this.wnorl;
       var kgBe = this.beforeArr;
       var warr = text.split("\n");
@@ -582,7 +711,6 @@ export default {
               }
             }
           } else if (kgcdlst[i].trim().indexOf("=") !== -1) {
-            // console.log(kgcdlst[i].trim().split("="));
           }
         }
         var tempcon = "";
@@ -607,11 +735,12 @@ export default {
           uploadData.push(element);
         });
       }
-      console.log(uploadData);
-      let res = submitKgCode({
+      // console.log(uploadData);
+      let res = await submitKgCode({
         dbname: this.selectKGDBName,
         seqs: uploadData,
       });
+      // console.log(res);
     },
     // 过滤出单独节点
     filtIndividualNodes(nodes, edges) {
@@ -632,8 +761,58 @@ export default {
       IndividualNodes = nodes;
       return IndividualNodes;
     },
+    // 新建数据库
+    // cid字段
+    async addKGDB() {
+      // 添加库
+      if (this.addKGDBName != "") {
+        // let res = await createKGDB({
+        //   dbname: 'KG_cid',
+        // });
+        // 添加库关联的课程名库
+        let info = await addADBInfoInter({
+          dbname: "KG_" + "cid",
+          cname: this.addKGDBName,
+          cid: "202111271303",
+        });
+        this.$q.notify({
+          message: `添加成功！`,
+          timeout: 300,
+          color: "green",
+          position: "top",
+        });
+        this.addKGDBDialog = false;
+      }
+    },
+    // 模糊匹配
+    async matchSearchByStr() {
+      let res = await matchSearch({
+        dbname: "DBANME",
+        headword: this.searchTerm,
+        type: "con",
+      });
+    },
+    // 是否存在课程名字的数据库
+    // cid字段
+    async checkExistDB(selectKGDBName) {
+      let res = await checkExistDBInter({
+        // name: "DBNAME",
+        name: selectKGDBName,
+        // 输入cid
+        cid: "202111271003",
+      });
+      // 不存在
+      if (res.data.data === null) {
+        // 添加
+        this.addKGDBDialog = true;
+        this.addKGDBName = this.selectKGDBName;
+      } else {
+        // 存在则将上传的数据库的名字保存下来
+        this.uploadDBName = res.data.data.dbname;
+      }
+    },
   },
-  mounted() {
+  async mounted() {
     // 初始化图谱容器
     this.container = document.getElementById("mynetwork");
     this.createGraphInit({
@@ -642,6 +821,13 @@ export default {
         edges: [],
       },
     });
+    // 初始化图谱数据库名称
+    let res = await findAllDBNameAndCName();
+    let info = res.data.data;
+    for (let i = 0; i < info.length; i++) {
+      const item = info[i];
+      this.DBList.push(item.course.name);
+    }
   },
 };
 </script>

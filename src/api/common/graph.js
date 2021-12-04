@@ -7,7 +7,7 @@ export function editKG(data) {
       method: "post",
       data
     });
-  }
+}
 
   export function fuzzFindConterm(data) {
     return request({

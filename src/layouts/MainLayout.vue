@@ -84,7 +84,7 @@
 
               <q-item
                 active-class="tab-active"
-                to="/graph"
+                to="/graphBack"
                 class="q-ma-sm navigation-item"
                 clickable
                 v-ripple
