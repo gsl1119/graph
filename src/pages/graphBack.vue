@@ -101,23 +101,27 @@
         </div>
       </q-card-section>
 
-       <q-dialog v-model="alert">
-      <q-card>
-        <q-card-section>
-          <div class="text-h6">敬告</div>
-        </q-card-section>
+      <q-dialog v-model="alert">
+        <q-card>
+          <q-card-section>
+            <div class="text-h6">敬告</div>
+          </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          此操作存在概念-=**，如继续将会删除所有**节点，请慎重！！！
-        </q-card-section>
+          <q-card-section class="q-pt-none">
+            此操作存在概念-=**，如继续将会删除所有**节点，请慎重！！！
+          </q-card-section>
 
-        <q-card-actions align="right">
-        <q-btn flat label="取消" color="primary" v-close-popup />
-          <q-btn flat label="知晓并继续" color="primary" @click="checkAlter()" />
-          
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
+          <q-card-actions align="right">
+            <q-btn flat label="取消" color="primary" v-close-popup />
+            <q-btn
+              flat
+              label="知晓并继续"
+              color="primary"
+              @click="checkAlter()"
+            />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
     </q-card>
   </q-page>
 </template>
@@ -143,8 +147,8 @@ export default {
   data() {
     let _this = this;
     return {
-      forceUpload:false,
-      alert:false,
+      forceUpload: false,
+      alert: false,
       //上传数据库的名称（课程名的别名）（不是课程名）
       uploadDBName: "",
       // 模糊查询的字段
@@ -231,10 +235,10 @@ export default {
     };
   },
   methods: {
-    checkAlter(){
-      this.forceUpload = true
-      this.controlTimeUpdate()
-      this.alert = false
+    checkAlter() {
+      this.forceUpload = true;
+      this.controlTimeUpdate();
+      this.alert = false;
     },
     // 随机颜色
     randomColor() {
@@ -516,7 +520,7 @@ export default {
         // }
       }
       // tempWStr = tempWStr + snodeLabel + "." + edgeLabel + "-=" + tnodeLabel;
-      // tempWStr = tempWStr + 
+      // tempWStr = tempWStr +
       callback(data);
       this.nodes = this._network.body.data.nodes.get();
       this.edges = this._network.body.data.edges.get();
@@ -673,42 +677,41 @@ export default {
       this.edges = edges;
       for (let i = 0; i < delteWarr.length; i++) {
         const item = delteWarr[i];
-        let edgedeleteNode
+        let edgedeleteNode;
         // 删除节点
         if (item.search("概念") !== -1) {
           for (let j = 0; j < this.nodes.length; j++) {
             const el = this.nodes[j];
             if (el.label === item.split("-=")[1]) {
-              let nodeId = el.id
+              let nodeId = el.id;
               this.nodes.splice(j, 1);
               // 查找与之相连的边
               for (let k = 0; k < this.edges.length; k++) {
                 const edge = this.edges[k];
                 if (this.edges[k].id.search(nodeId) != -1) {
                   this.edges.splice(k, 1);
-                  k = k-1
+                  k = k - 1;
                 }
               }
-             
             }
           }
         }
         if (item.search("概念") === -1) {
-          let snodeLabel = item.split(".")[0]
-          let tnodeLabel = item.split("-=")[1]
-          let snodeId = ''
-           let tnodeId = ''
+          let snodeLabel = item.split(".")[0];
+          let tnodeLabel = item.split("-=")[1];
+          let snodeId = "";
+          let tnodeId = "";
           for (let i = 0; i < this.nodes.length; i++) {
             const item = this.nodes[i];
             if (item.label === snodeLabel) {
-              snodeId = item.id
+              snodeId = item.id;
             }
             if (item.label === tnodeLabel) {
-               tnodeId = item.id
+              tnodeId = item.id;
             }
           }
-          console.log(snodeLabel+"..."+tnodeLabel);
-          console.log(snodeId+"..."+tnodeId);
+          console.log(snodeLabel + "..." + tnodeLabel);
+          console.log(snodeId + "..." + tnodeId);
           console.log(this.nodes);
 
           for (let j = 0; j < this.edges.length; j++) {
@@ -716,22 +719,21 @@ export default {
             if (item.id.search(snodeId) != -1) {
               if (item.id.search(tnodeId) != -1) {
                 // console.log(item);
-                this.edges.splice(j,1)
+                this.edges.splice(j, 1);
                 console.log(this.nodes);
               }
             }
           }
 
+          // }
 
-        // }
-
-        // if (item.search("关系") !== -1) {
-        //   for (let j = 0; j < this.edges.length; j++) {
-        //     const el = this.edges[j];
-        //     if (el.label === item.split("-=")[1]) {
-        //       this.edges.splice(j, 1);
-        //     }
-        //   }
+          // if (item.search("关系") !== -1) {
+          //   for (let j = 0; j < this.edges.length; j++) {
+          //     const el = this.edges[j];
+          //     if (el.label === item.split("-=")[1]) {
+          //       this.edges.splice(j, 1);
+          //     }
+          //   }
         }
       }
       return { nodes: this.nodes, edges: this.edges };
@@ -741,25 +743,25 @@ export default {
       const _this = this;
       var text = this.wnorl;
       if (text.search("概念-=") !== -1 && !this.forceUpload) {
-        this.alert = true
+        this.alert = true;
       }
       if (this.forceUpload === true) {
         var warr = text.split("\n");
-      // 去掉空格
-      for (let i = 0; i < warr.length; i++) {
-        if (warr[i] === "") {
-          warr.splice(i, 1);
-          i--;
+        // 去掉空格
+        for (let i = 0; i < warr.length; i++) {
+          if (warr[i] === "") {
+            warr.splice(i, 1);
+            i--;
+          }
         }
-      }
-      var data = this.wtransToGraph(warr);
-      this.createGraphInit({
-        graph: {
-          nodes: data.nodes,
-          edges: data.edges
-        }
-      });
-      this.forceUpload = false
+        var data = this.wtransToGraph(warr);
+        this.createGraphInit({
+          graph: {
+            nodes: data.nodes,
+            edges: data.edges
+          }
+        });
+        this.forceUpload = false;
       }
     },
     // 查找节点的id
@@ -772,6 +774,7 @@ export default {
       });
       return id;
     },
+
     // 查找连线的id
     findEdgeId(label, sNodeId, tNodeId) {
       let id = sNodeId + "-" + tNodeId + "-" + label;
