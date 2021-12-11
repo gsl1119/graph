@@ -87,19 +87,37 @@
             />
             <div class="section-right-son row">
               <q-btn icon="add" color="green" @click="upload" class="q-ma-sm"
-                >添加</q-btn
+                >上传</q-btn
               >
               <q-btn
                 icon="upload"
                 color="green"
                 @click="controlTimeUpdate"
                 class="q-ma-sm"
-                >更新并格式化</q-btn
+                >更新并绘图</q-btn
               >
             </div>
           </div>
         </div>
       </q-card-section>
+
+       <q-dialog v-model="alert">
+      <q-card>
+        <q-card-section>
+          <div class="text-h6">敬告</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          此操作存在概念-=**，如继续将会删除所有**节点，请慎重！！！
+        </q-card-section>
+
+        <q-card-actions align="right">
+        <q-btn flat label="取消" color="primary" v-close-popup />
+          <q-btn flat label="知晓并继续" color="primary" @click="checkAlter()" />
+          
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
     </q-card>
   </q-page>
 </template>
@@ -125,6 +143,8 @@ export default {
   data() {
     let _this = this;
     return {
+      forceUpload:false,
+      alert:false,
       //上传数据库的名称（课程名的别名）（不是课程名）
       uploadDBName: "",
       // 模糊查询的字段
@@ -211,6 +231,11 @@ export default {
     };
   },
   methods: {
+    checkAlter(){
+      this.forceUpload = true
+      this.controlTimeUpdate()
+      this.alert = false
+    },
     // 随机颜色
     randomColor() {
       var colors = [
@@ -715,7 +740,11 @@ export default {
     controlTimeUpdate() {
       const _this = this;
       var text = this.wnorl;
-      var warr = text.split("\n");
+      if (text.search("概念-=") !== -1 && !this.forceUpload) {
+        this.alert = true
+      }
+      if (this.forceUpload === true) {
+        var warr = text.split("\n");
       // 去掉空格
       for (let i = 0; i < warr.length; i++) {
         if (warr[i] === "") {
@@ -730,6 +759,8 @@ export default {
           edges: data.edges
         }
       });
+      this.forceUpload = false
+      }
     },
     // 查找节点的id
     findNodeId(label) {
