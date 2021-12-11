@@ -72,8 +72,8 @@ export function addADBInfoInter(data){
 }
   export function login(data) {
     return requestGraph({
-      url: '/findNormalUser',
-      method: 'post',
+      url: '/login',
+      method: 'POST',
       data
     })
   }

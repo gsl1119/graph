@@ -1,12 +1,17 @@
-
-const routes = [
-  { path: '/', component: () => import('pages/login.vue') },
+const routes = [{
+    path: '/login',
+    component: () => import('pages/login.vue'),
+    meta: {
+      isPublic: true
+    }
+  },
   {
-    path: '/',
+    path: '/mainLayout',
     component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '/graph', component: () => import('src/pages/Graph.vue') },
-      { path: '/graphBack', component: () => import('src/pages/graphBack.vue') },
+    children: [{
+        path: 'graph',
+        component: () => import('src/pages/Graph.vue')
+      },
       // { path: '/dashboard', component: () => import('pages/dashboard.vue') },
       // { path: '/dashboard_v2', component: () => import('pages/dashboard_v2.vue') },
       // { path: '/dashboard_v3', component: () => import('pages/dashboard_v3.vue') },
