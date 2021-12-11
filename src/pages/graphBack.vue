@@ -323,6 +323,7 @@ export default {
           }
         }
         // 更新W语言区域
+        this.deleteWnorl = []
         _this.wnorl = "";
         _this.graphTransToW(_this.nodes, _this.edges);
         
@@ -571,6 +572,7 @@ export default {
           tempDeleteStr = tempDeleteStr + item + "\n";
         }
       }
+      tempDeleteStr = tempDeleteStr.trim()
       // 数据转化为w语言的数组
       var w = [];
       for (let i = 0; i < Edges.length; i++) {
@@ -614,6 +616,7 @@ export default {
         }
       }
       this.wnorl = this.wnorl + tempDeleteStr;
+      console.log(this.wnorl);
     },
     // W语言转图谱（数据转换）
     wtransToGraph(warr) {
@@ -623,6 +626,7 @@ export default {
         if (item.search("-=") !== -1) {
           delteWarr.push(item);
           warr.splice(i, 1);
+          i--;
         }
       }
       var temp = [];
