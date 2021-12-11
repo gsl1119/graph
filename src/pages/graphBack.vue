@@ -86,15 +86,14 @@
               type="textarea"
             />
             <div class="section-right-son row">
-              <q-btn icon="add" color="green" @click="upload" class="q-ma-sm"
-                >上传</q-btn
+              <q-btn color="green" @click="controlTimeUpdate" class="q-ma-sm"
+                >更新并绘图</q-btn
               >
               <q-btn
-                icon="upload"
                 color="green"
-                @click="controlTimeUpdate"
+                @click="upload"
                 class="q-ma-sm"
-                >更新并绘图</q-btn
+                >上传</q-btn
               >
             </div>
           </div>
@@ -147,6 +146,7 @@ export default {
   data() {
     let _this = this;
     return {
+      deleteWnorl:[],
       forceUpload: false,
       alert: false,
       //上传数据库的名称（课程名的别名）（不是课程名）
@@ -325,10 +325,16 @@ export default {
         // 更新W语言区域
         _this.wnorl = "";
         _this.graphTransToW(_this.nodes, _this.edges);
+        
       });
       // 初始化更新W语言区域
       this.wnorl = "";
       this.graphTransToW(this.nodes, this.edges);
+      console.log(this.deleteWnorl);
+        for (let i = 0; i < this.deleteWnorl.length; i++) {
+          const item = this.deleteWnorl[i];
+           _this.wnorl =  _this.wnorl + item + '\n'
+        }
     },
     //处理搜索框点击事件
     async handleSearchClike() {
@@ -611,7 +617,6 @@ export default {
     },
     // W语言转图谱（数据转换）
     wtransToGraph(warr) {
-      console.log(warr);
       let delteWarr = [];
       for (let i = 0; i < warr.length; i++) {
         const item = warr[i];
@@ -675,6 +680,7 @@ export default {
       }
       this.nodes = nodes;
       this.edges = edges;
+      this.deleteWnorl = delteWarr
       for (let i = 0; i < delteWarr.length; i++) {
         const item = delteWarr[i];
         let edgedeleteNode;
@@ -710,15 +716,11 @@ export default {
               tnodeId = item.id;
             }
           }
-          console.log(snodeLabel + "..." + tnodeLabel);
-          console.log(snodeId + "..." + tnodeId);
-          console.log(this.nodes);
 
           for (let j = 0; j < this.edges.length; j++) {
             const item = this.edges[j];
             if (item.id.search(snodeId) != -1) {
               if (item.id.search(tnodeId) != -1) {
-                // console.log(item);
                 this.edges.splice(j, 1);
                 console.log(this.nodes);
               }
@@ -736,6 +738,7 @@ export default {
           //   }
         }
       }
+      console.log(this.wnorl);
       return { nodes: this.nodes, edges: this.edges };
     },
     // 控制图谱与W语言实时更新
@@ -744,8 +747,9 @@ export default {
       var text = this.wnorl;
       if (text.search("概念-=") !== -1 && !this.forceUpload) {
         this.alert = true;
-      }
-      if (this.forceUpload === true) {
+        this.forceUpload = true
+      }else{
+        if (this.forceUpload === true || text.search("概念-=") === -1) {
         var warr = text.split("\n");
         // 去掉空格
         for (let i = 0; i < warr.length; i++) {
@@ -761,8 +765,10 @@ export default {
             edges: data.edges
           }
         });
-        this.forceUpload = false;
+        this.forceUpload === false
       }
+      }
+     
     },
     // 查找节点的id
     findNodeId(label) {
@@ -828,7 +834,7 @@ export default {
                 con.push(temptri[j].trim());
               }
             }
-          } else if (kgcdlst[i].trim().indexOf("=") !== -1) {
+          } else if (kgCdList[i].trim().indexOf("=") !== -1) {
           }
         }
         var tempcon = "";
@@ -853,10 +859,12 @@ export default {
           uploadData.push(element);
         });
       }
-      let res = await submitKgCode({
-        dbname: this.selectKGDBName,
-        seqs: uploadData
-      });
+      uploadData = uploadData.filter(item => item)
+      console.log(uploadData);
+      // let res = await submitKgCode({
+      //   dbname: this.selectKGDBName,
+      //   seqs: uploadData
+      // });
     },
     // 过滤出单独节点
     filtIndividualNodes(nodes, edges) {
