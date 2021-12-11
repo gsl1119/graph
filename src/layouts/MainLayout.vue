@@ -70,21 +70,7 @@
             <q-list padding>
               <q-item
                 active-class="tab-active"
-                to="/graph"
-                class="q-ma-sm navigation-item"
-                clickable
-                v-ripple
-              >
-                <q-item-section avatar>
-                  <q-icon name="bubble_chart" />
-                </q-item-section>
-
-                <q-item-section> 知识图谱 </q-item-section>
-              </q-item>
-
-              <q-item
-                active-class="tab-active"
-                to="/graphBack"
+                to="/mainLayout/graph"
                 class="q-ma-sm navigation-item"
                 clickable
                 v-ripple
@@ -116,6 +102,7 @@
 </template>
 
 <script>
+import { removeToken } from "../utils/auth";
 export default {
   data() {
     return {
@@ -127,6 +114,7 @@ export default {
       this.$q.notify({
         message: "Logged out",
       });
+      removeToken();
     },
   },
 };

@@ -35,12 +35,12 @@
           </q-card-section>
           <q-card-section>
             <q-form class="q-gutter-md">
-              <q-input filled v-model="username" label="Username" lazy-rules />
+              <q-input filled v-model="userinfo.userName" label="Username" lazy-rules />
 
               <q-input
                 type="password"
                 filled
-                v-model="password"
+                v-model="userinfo.userPass"
                 label="Password"
                 lazy-rules
               />
@@ -76,29 +76,42 @@ import { login } from 'src/api/common/graph';
 export default {
   data() {
     return {
-      username: "admin",
-      password: "Admin@CRM",
+       userinfo: {
+        userName: "admin",
+        userPass: "Admin@CRM",
+      },
     };
   },
   methods: {
-    loginNotify() {
-      login({
-        userName:this.username,
-        userPass:this.password
-      }).then((res)=>{
-        let checkPoint = res.data.data;
-        if(checkPoint){
-          this.$router.push("/graph")
+    async loginNotify() {
+       if (this.userinfo.userName === "") {
+        this.$q.notify({
+          message: "账号不能为空！",
+          type: "negative",
+          timeout: 1000,
+        });
+        return;
+      }
+      if (this.userinfo.userPass === "") {
+        this.$q.notify({
+          message: "密码不能为空！",
+          type: "negative",
+          timeout: 1000,
+        });
+        retrun;
+      }
+      await this.$store.dispatch("user/userLogin", this.userinfo);
+    setTimeout(() => {
+          const nickname = this.$store.getters["user/nickname"];
           this.$q.notify({
-          message: "登陆成功",
+            message: `欢迎回来，${nickname}`,
+            color: "positive",
+            icon: "sentiment_satisfied_alt",
+            position: "bottom",
+            timeout: 2000,
           });
-        }else
-        {
-          this.$q.notify({
-          message: "用户名或密码错误",
-          });
-        }
-      })
+        }, 500);
+      this.$router.push("/mainLayout/graph")
       // console.log(data);
 
     },
