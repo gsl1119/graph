@@ -79,7 +79,7 @@
                   <q-icon name="bubble_chart" />
                 </q-item-section>
 
-                <q-item-section> 文本摘要 </q-item-section>
+                <q-item-section> 图谱编辑 </q-item-section>
               </q-item>
             </q-list>
           </q-scroll-area>
