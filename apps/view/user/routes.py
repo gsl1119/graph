@@ -1,26 +1,20 @@
+from . import common_bp
 import json
-from flask import Blueprint
 from flask import request
-from ext.jwt import jwt
 
 from flask_jwt_extended import (create_access_token, get_jwt_identity, jwt_required)
 
-from apps.models import Student
-from ext import db
-from ext.bcrypt import bcrypt
+from ...service import User
 
 
-common_dp = Blueprint('common', __name__)
-
-
-@common_dp.route('/login', methods=['GET', 'POST'])
+@common_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
         data = json.loads(request.data)
         username = data['userName']
         password = data['userPass']
         try:
-            result = db.session.query(Student).filter(Student.user_name == username).all()
+            result = User.sql_login(username)
             if len(result) == 0:
                 return {
                     "code": 4000,
@@ -46,18 +40,5 @@ def login():
                 "code": 4000,
                 "msg": "账号或密码错误",
             }
-
-
 # flask响应return时老是报相同的错：TypeError: The view function did not return a valid response. The function either returned
 # None or ended without a return statement.
-
-
-@common_dp.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == "POST":
-        data = json.loads(request.data)
-        print(data)
-        stu1 = Student(data['username'], data['password'])
-        db.session.add(stu1)
-        db.session.commit()
-        return 'ok'

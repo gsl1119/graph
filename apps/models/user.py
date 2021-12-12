@@ -1,6 +1,4 @@
-# ORM映射 ==> 表
-import datetime
-
+# ORM => 映射表
 from ext import db
 
 
