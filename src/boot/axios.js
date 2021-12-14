@@ -12,7 +12,7 @@ export const request = axios.create({
 });
 export const requestGraph = axios.create({
   // baseURL: "http://47.105.219.223:8090",
-   baseURL: "http://101.43.7.172:8080/",
+   baseURL: "http://101.43.7.172:8888/",
    timeout: 50000
 });
 
