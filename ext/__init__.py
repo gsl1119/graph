@@ -16,4 +16,3 @@ def init_ext(app):
     jwt = JWTManager(app)
     bcrypt = Bcrypt(app)
     return cors, migrate, jwt, bcrypt
-
