@@ -11,6 +11,10 @@ user = config.get('mysql', 'user')
 password = config.get('mysql', 'password')
 db = config.get('mysql', 'db')
 
+cache_type = config.get('redis', 'cache_type')
+cache_redis_host = config.get('redis', 'cache_redis_host')
+cache_redis_port = config.get('redis', 'cache_redis_port')
+
 
 class Config:
     DEBUG: False
@@ -18,6 +22,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://' + user + ':' + password + '@' + host + ':' + port + '/' + db
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = True
+
 
 # 生产环境配置
 class DevelopmentConfig(Config):
@@ -31,3 +36,11 @@ class ProductionConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
+
+
+class CachingConfig(Config):
+    config: {
+        'CACHE_TYPE': cache_type,
+        'CACHE_REDIS_HOST': cache_redis_host,
+        'CACHE_REDIS_PORT': cache_redis_port
+    }

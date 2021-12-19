@@ -1,8 +1,8 @@
 from flask import Flask
 
 from apps.view import init_view
-from ext import db, init_ext, manager
-from settings import DevelopmentConfig
+from ext import db, init_ext, manager, cache
+from settings import DevelopmentConfig, CachingConfig
 
 
 def create_app():
@@ -12,6 +12,7 @@ def create_app():
     init_view(app)
     db.init_app(app)  # 将db对象与app进行了关联
     manager.__init__(app=app)
+    cache.init_app(app=app, config=CachingConfig.config)
     init_ext(app)
     # 注册蓝图
     return app
