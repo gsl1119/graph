@@ -14,6 +14,7 @@ db = config.get('mysql', 'db')
 cache_type = config.get('redis', 'cache_type')
 cache_redis_host = config.get('redis', 'cache_redis_host')
 cache_redis_port = config.get('redis', 'cache_redis_port')
+CACHE_KEY_PREFIX = config.get('redis', 'CACHE_KEY_PREFIX')
 
 
 class Config:
@@ -38,9 +39,10 @@ class TestingConfig(Config):
     TESTING = True
 
 
-class CachingConfig(Config):
-    config: {
+class CachingConfig():
+    config = {
         'CACHE_TYPE': cache_type,
         'CACHE_REDIS_HOST': cache_redis_host,
-        'CACHE_REDIS_PORT': cache_redis_port
+        'CACHE_REDIS_PORT': cache_redis_port,
+        'CACHE_KEY_PREFIX':CACHE_KEY_PREFIX
     }

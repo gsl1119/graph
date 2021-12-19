@@ -11,6 +11,7 @@ db = SQLAlchemy()
 manager = Manager()
 cache = Cache()
 
+
 def init_ext(app):
     cors = CORS(app, resources=r'/*')
     migrate = Migrate(app=app, db=db)

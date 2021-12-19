@@ -1,3 +1,4 @@
+from ext import cache
 from . import common_bp
 import json
 from flask import request
@@ -24,6 +25,7 @@ def login():
                 real_pwd = row.password
                 if real_pwd == password:
                     access_token = create_access_token(identity=12323)
+                    # cache.set(username, access_token, timeout=31535992)
                     return {
                         "code": 2000,
                         "msg": "登录成功",
