@@ -25,13 +25,21 @@ def login():
                 real_pwd = row.password
                 if real_pwd == password:
                     access_token = create_access_token(identity=12323)
-                    # cache.set(username, access_token, timeout=31535992)
-                    return {
-                        "code": 2000,
-                        "msg": "登录成功",
-                        "token": access_token,
-                        "nickname": username
-                    }
+                    # cache.delete(username)
+                    # cache.set(username, access_token)
+                    # cache.cached(timeout=20)
+                    if cache.get(username) :
+                        return {
+                            "code": 2000,
+                            "msg": "登录成功",
+                            "token": access_token,
+                            "nickname": username
+                        }
+                    else:
+                        return {
+                            "code": 4000,
+                            "msg": "您的账号已经过期，请续费后使用",
+                        }
                 else:
                     return {
                         "code": 4000,
