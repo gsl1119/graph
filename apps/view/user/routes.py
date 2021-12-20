@@ -3,7 +3,7 @@ from . import common_bp
 import json
 from flask import request
 
-from flask_jwt_extended import (create_access_token, get_jwt_identity, jwt_required)
+from flask_jwt_extended import (create_access_token)
 
 from ...service import User
 
@@ -28,7 +28,7 @@ def login():
                     # cache.delete(username)
                     # cache.set(username, access_token)
                     # cache.cached(timeout=20)
-                    if cache.get(username) :
+                    if cache.get(username):
                         return {
                             "code": 2000,
                             "msg": "登录成功",

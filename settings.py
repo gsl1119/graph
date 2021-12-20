@@ -15,6 +15,8 @@ cache_type = config.get('redis', 'cache_type')
 cache_redis_host = config.get('redis', 'cache_redis_host')
 cache_redis_port = config.get('redis', 'cache_redis_port')
 CACHE_KEY_PREFIX = config.get('redis', 'CACHE_KEY_PREFIX')
+CACHE_REDIS_PASSWORD = config.get('redis', 'CACHE_REDIS_PASSWORD')
+CACHE_REDIS_DB = config.get('redis', 'CACHE_REDIS_DB')
 
 
 class Config:
@@ -44,5 +46,7 @@ class CachingConfig():
         'CACHE_TYPE': cache_type,
         'CACHE_REDIS_HOST': cache_redis_host,
         'CACHE_REDIS_PORT': cache_redis_port,
-        'CACHE_KEY_PREFIX':CACHE_KEY_PREFIX
+        'CACHE_KEY_PREFIX': CACHE_KEY_PREFIX,
+        'CACHE_REDIS_PASSWORD': CACHE_REDIS_PASSWORD,
+        'CACHE_REDIS_DB': CACHE_REDIS_DB
     }
