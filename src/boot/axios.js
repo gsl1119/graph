@@ -24,7 +24,7 @@ export const requestGraph = axios.create({
 //   // Response interceptor
 //   request.interceptors.response.use(
 //     res => {
-//       return res;
+//       return res;kill
 //     },
 //     err => {
 //       if (err.response.status === 401) {
