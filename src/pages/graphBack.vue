@@ -35,6 +35,7 @@
           @input="checkExistDB(selectKGDBName)"
           :options="DBList"
           label="图谱名称"
+          
         >
         </q-select>
         <!-- 搜索知识点 -->

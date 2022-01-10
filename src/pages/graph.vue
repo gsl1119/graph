@@ -7,6 +7,7 @@
     >
       <q-card style="min-width: 350px">
         <q-card-section>
+
           <div class="text-h6">图谱数据库名称</div>
         </q-card-section>
 
@@ -662,6 +663,7 @@ export default {
       var text = this.wnorl;
       var warr = text.split("\n");
       // 去掉空格
+      
       for (let i = 0; i < warr.length; i++) {
         if (warr[i] === "") {
           warr.splice(i, 1);
