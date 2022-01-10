@@ -10,7 +10,7 @@ const routes = [{
     component: () => import('layouts/MainLayout.vue'),
     children: [{
         path: 'graph',
-        component: () => import('src/pages/Graph.vue')
+        component: () => import('src/pages/graph.vue')
       },
       // { path: '/dashboard', component: () => import('pages/dashboard.vue') },
       // { path: '/dashboard_v2', component: () => import('pages/dashboard_v2.vue') },
