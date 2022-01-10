@@ -77,7 +77,7 @@ export default {
   data() {
     return {
        userinfo: {
-        userName: "admin",
+        userName: "admin1",
         userPass: "Admin@CRM",
       },
     };
