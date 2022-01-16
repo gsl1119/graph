@@ -5,7 +5,7 @@ import {
 } from "quasar";
 
 export const request = axios.create({
-  baseURL: "http://39.104.151.240/", // 线上服务地址
+  baseURL: "http://39.104.151.240:5000/", // 线上服务地址
   // baseURL: "http://anrunlu-test.com/",   // 后端测试地址
   // baseURL: "http://182.92.231.190:9000/",
   timeout: 150000
