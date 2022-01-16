@@ -5,14 +5,14 @@ import {
 } from "quasar";
 
 export const request = axios.create({
-  baseURL: "https://graph.darryllin.cn/", // 线上服务地址
+  baseURL: "http://39.104.151.240/", // 线上服务地址
   // baseURL: "http://anrunlu-test.com/",   // 后端测试地址
   // baseURL: "http://182.92.231.190:9000/",
   timeout: 150000
 });
 export const requestGraph = axios.create({
   // baseURL: "http://47.105.219.223:8090",
-   baseURL: "https://graph.darrylli.cn/api",
+   baseURL: "http://graph.darrylli.cn/api",
    timeout: 50000
 });
 
