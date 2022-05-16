@@ -12,7 +12,8 @@ export const request = axios.create({
 });
 export const requestGraph = axios.create({
   // baseURL: "http://47.105.219.223:8090",
-   baseURL: "http://graph.darrylli.cn/api",
+  //  baseURL: "http://localhost:8888",
+   baseURL: "https://knowledge.darryllin.cn/",
    timeout: 50000
 });
 

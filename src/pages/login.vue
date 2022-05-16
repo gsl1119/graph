@@ -35,12 +35,12 @@
           </q-card-section>
           <q-card-section>
             <q-form class="q-gutter-md">
-              <q-input filled v-model="userinfo.userName" label="Username" lazy-rules />
+              <q-input filled v-model="userinfo.username" label="Username" lazy-rules />
 
               <q-input
                 type="password"
                 filled
-                v-model="userinfo.userPass"
+                v-model="userinfo.password"
                 label="Password"
                 lazy-rules
               />
@@ -77,14 +77,14 @@ export default {
   data() {
     return {
        userinfo: {
-        userName: "admin1",
-        userPass: "Admin@CRM",
+        username: "admin",
+        password: "Admin@CRM",
       },
     };
   },
   methods: {
     async loginNotify() {
-       if (this.userinfo.userName === "") {
+       if (this.userinfo.username === "") {
         this.$q.notify({
           message: "账号不能为空！",
           type: "negative",
@@ -92,7 +92,7 @@ export default {
         });
         return;
       }
-      if (this.userinfo.userPass === "") {
+      if (this.userinfo.password === "") {
         this.$q.notify({
           message: "密码不能为空！",
           type: "negative",

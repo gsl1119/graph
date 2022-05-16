@@ -2,9 +2,9 @@ import { login } from "../../api/common/graph";
 import { setToken, removeToken } from "../../utils/auth";
 
 export function userLogin({ commit }, userInfo) {
-  const { userName, userPass } = userInfo;
+  const { username, password } = userInfo;
   return new Promise((resolve, reject) => {
-    login({ userName, userPass })
+    login({ username, password })
       .then(response => {
         const { data } = response;
         console.log(data);
