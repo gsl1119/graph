@@ -1,13 +1,9 @@
 <template>
   <q-page>
     <!-- 添加图谱数据库 -->
-    <q-dialog
-      v-model="addKGDBDialog"
-      persistent
-    >
+    <q-dialog v-model="addKGDBDialog" persistent>
       <q-card style="min-width: 350px">
         <q-card-section>
-
           <div class="text-h6">图谱数据库名称</div>
         </q-card-section>
 
@@ -15,115 +11,87 @@
           <!-- 课程数据库的名字 -->
           <q-input
             dense
-            v-model="addKGDBName"
+            v-model="addKGDBName.name"
             autofocus
             :rules="[(val) => !!val || '空字段！']"
           ></q-input>
         </q-card-section>
 
-        <q-card-actions
-          align="right"
-          class="text-primary"
-        >
-          <q-btn
-            flat
-            label="取消"
-            v-close-popup
-          ></q-btn>
-            <q-btn
-              flat
-              label="添加"
-              type="submit"
-              @click="addKGDB"
-            ></q-btn>
-              </q-card-actions>
+        <q-card-actions align="right" class="text-primary">
+          <q-btn flat label="取消" v-close-popup></q-btn>
+          <q-btn flat label="添加" type="submit" @click="addKGDB"></q-btn>
+        </q-card-actions>
       </q-card>
-      </q-dialog>
-      <q-card
-        flat
-        bordered
-        class="q-pa-sm q-ma-sm"
-      >
-        <!-- 知识点搜索框 -->
-        <q-card-section class="q-pa-xs row">
-          <!-- 选择是课程数据库的名称 -->
-          <q-select
-            use-input
-            class="col-3 q-mt-none"
-            style="margin-top: -0rem"
-            v-model="selectKGDBName"
-            @input="checkExistDB(selectKGDBName)"
-            :options="DBList"
-            label="图谱名称"
-          >
-            </q-select>
-            <!-- 搜索知识点 -->
-            <div class="GPLAY__toolbar-input-container row q-ma-md no-wrap col-5">
-              <q-input
-                dense
-                outlined
-                square
-                v-model="searchTerm"
-                placeholder="请输入知识点"
-                @keydown="matchSearchByStr"
-                class="bg-white col q-ma-none"
-              />
+    </q-dialog>
+    <q-card flat bordered class="q-pa-sm q-ma-sm">
+      <!-- 知识点搜索框 -->
+      <q-card-section class="q-pa-xs row">
+        <!-- 选择是课程数据库的名称 -->
+        <q-select
+          use-input
+          class="col-3 q-mt-none"
+          style="margin-top: -0rem"
+          v-model="selectKGDBName"
+          @input="checkExistDB(selectKGDBName)"
+          :options="DBList"
+          option-label="name"
+          option-value="course_id"
+          label="图谱名称"
+        >
+        </q-select>
+        <!-- 搜索知识点 -->
+        <div class="GPLAY__toolbar-input-container row q-ma-md no-wrap col-5">
+          <q-input
+            dense
+            outlined
+            square
+            v-model="searchTerm"
+            placeholder="请输入知识点"
+            class="bg-white col q-ma-none"
+            @keyup.enter.native="handleSearchClike"
+          />
+          <q-btn
+            @click="handleSearchClike"
+            color="primary"
+            class="q-ma-none"
+            icon="search"
+            style="height: 2.5rem"
+          />
+        </div>
+      </q-card-section>
+      <q-separator inset> </q-separator>
+      <q-card-section class="q-pa-none q-ma-none">
+        <div class="row q-gutter-md">
+          <!-- 图谱渲染 -->
+          <div
+            id="mynetwork"
+            class="col-12 col-md-8"
+            style="height: 85vh;1px solid lightgray;"
+          ></div>
+          <q-separator vertical size="0.2rem"> </q-separator>
+          <!-- W语言编辑区 -->.
+          <div class="full-width col">
+            <q-input
+              v-model="wnorl"
+              style="max-height: 70vh; overflow: scroll"
+              type="textarea"
+            />
+            <div class="section-right-son row">
               <q-btn
-                @click="handleSearchClike"
-                color="primary"
-                class="q-ma-none"
-                icon="search"
-                style="height: 2.5rem"
-              />
+                icon="upload"
+                color="green"
+                @click="controlTimeUpdate"
+                class="q-ma-sm"
+                >更新并格式化</q-btn
+              >
+              <q-btn icon="add" color="green" @click="upload" class="q-ma-sm"
+                >上传服务器</q-btn
+              >
             </div>
-            <!-- <q-btn
-              color="secondary"
-              class="absolute-top-right"
-              icon="add"
-              size='1.3rem'
-              @click="addKGDBDialog = true"
-            > -->
-            <!-- <q-tooltip content-class="bg-accent">添加数据库</q-tooltip>
-              </q-btn> -->
-        </q-card-section>
-        <q-separator inset> </q-separator>
-        <q-card-section class="q-pa-none q-ma-none">
-          <div class="row q-gutter-md">
-            <!-- 图谱渲染 -->
-            <div
-              id="mynetwork"
-              class="col-12 col-md-8"
-              style="height: 85vh;1px solid lightgray;"
-            ></div>
-          <q-separator
-            vertical
-            size="0.2rem"
-          > </q-separator>
-            <!-- W语言编辑区 -->.
-            <div class="full-width col">
-              <q-input
-                v-model="wnorl"
-                style="max-height: 70vh;overflow:scroll"
-                type="textarea"
-              />
-              <div class="section-right-son row">
-                <q-btn
-                  icon="add"
-                  color="green"
-                  @click="upload"
-                  class="q-ma-sm"
-                >添加</q-btn>
-                  <q-btn
-                    icon="upload"
-                    color="green"
-                    @click="controlTimeUpdate"
-                    class="q-ma-sm"
-                  >更新并格式化</q-btn>
-              </div>
-            </div>
-            </div>
-        </q-card-section>
-        </q-card>
+          </div>
+        </div>
+      </q-card-section>
+    </q-card>
   </q-page>
 </template>
 <script>
@@ -136,14 +104,11 @@ import {
   submitKgCode,
   showDB,
   createKGDB,
-  matchSearchss,
   matchSearch,
   findAllDBNameAndCName,
   checkExistDBInter,
   addADBInfoInter,
 } from "src/api/common/graph";
-import { Loading } from "quasar";
-import { log } from "util";
 export default {
   data() {
     let _this = this;
@@ -155,7 +120,7 @@ export default {
       // 课程图谱数据库的名称
       addKGDBName: "",
       // 存储课程名称
-      DBList: [],
+      DBList: ["算法设计与分析"],
       //控制添加课程数据库的对话框
       addKGDBDialog: false,
       // 选择绑定的课程图谱数据库的名称
@@ -271,7 +236,7 @@ export default {
       //   var clickNodeId = this.getNodeAt(params.pointer.DOM); // 获取当前点击节点的id
       // });
       // 给图谱绑定双击事件
-      network.on("doubleClick", async function(params) {
+      network.on("doubleClick", async function (params) {
         var clickNodeId = this.getNodeAt(params.pointer.DOM); // 获取当前点击节点的id
         for (let index = 0; index < _this.nodes.length; index++) {
           //从当前节点nodes数组中查找到点击节点获取其label
@@ -353,7 +318,7 @@ export default {
       const data = {
         userno: "2017416616",
         conterm: searchData,
-        dbname: "DBNAME",
+        dbname: "KG_" + this.selectKGDBName,
       };
 
       let response = await editKG(data);
@@ -380,7 +345,7 @@ export default {
           cancel: true,
           persistent: true,
         })
-        .onOk(edgeName => {
+        .onOk((edgeName) => {
           this.saveEdgeData(edgeName, data, callback);
         })
         .onCancel(() => {
@@ -393,7 +358,7 @@ export default {
       if (typeof data.to === "object") data.to = data.to.id;
       if (typeof data.from === "object") data.from = data.from.id;
       data.label = edgeName;
-      var str = this.edges.some(item => item.id == data.id);
+      var str = this.edges.some((item) => item.id == data.id);
       if (str) {
         //当前为修改边
         for (let i = 0; i < this.edges.length; i++) {
@@ -408,7 +373,7 @@ export default {
           to: data.to,
           label: data.label,
           // 传入id
-          id: data.from+'-'+data.to,
+          id: data.from + "-" + data.to,
         });
       }
       this.graphTransToW(this.nodes, this.edges);
@@ -427,9 +392,9 @@ export default {
           cancel: true,
           persistent: true,
         })
-        .onOk(nodeName => {
+        .onOk((nodeName) => {
           let arr = [];
-          this.nodes.forEach(el => {
+          this.nodes.forEach((el) => {
             arr.push(el.label);
           });
           if (!arr.includes(nodeName) || this.nodes.length == 0) {
@@ -497,7 +462,7 @@ export default {
         data.id = id;
       }
       // 修改
-      var isExit = this.nodes.some(item => item.id == data.id);
+      var isExit = this.nodes.some((item) => item.id == data.id);
       if (isExit) {
         //当前为修改状态
         for (let i = 0; i < this.nodes.length; i++) {
@@ -624,9 +589,9 @@ export default {
           this.findNodeId(snode),
           this.findNodeId(tnode)
         );
-        let obj1 = nodes.find(o => o.label == snode);
-        let obj2 = nodes.find(o => o.label == tnode);
-        let check = edges.find(o => o.id == edgeId);
+        let obj1 = nodes.find((o) => o.label == snode);
+        let obj2 = nodes.find((o) => o.label == tnode);
+        let check = edges.find((o) => o.id == edgeId);
         console.log(JSON.stringify(check));
         if (JSON.stringify(check) == null) {
           edges.push({ from: obj1.id, to: obj2.id, label: rel, id: edgeId });
@@ -663,7 +628,7 @@ export default {
       var text = this.wnorl;
       var warr = text.split("\n");
       // 去掉空格
-      
+
       for (let i = 0; i < warr.length; i++) {
         if (warr[i] === "") {
           warr.splice(i, 1);
@@ -681,7 +646,7 @@ export default {
     // 查找节点的id
     findNodeId(label) {
       let id = label;
-      this.nodes.forEach(element => {
+      this.nodes.forEach((element) => {
         if (element.label === label) {
           id = element.id;
         }
@@ -692,7 +657,7 @@ export default {
     findEdgeId(label, sNodeId, tNodeId) {
       let id = sNodeId + "-" + tNodeId + "-" + label;
       // 查找到了就赋值
-      this.edges.forEach(element => {
+      this.edges.forEach((element) => {
         if (
           element.from === sNodeId &&
           element.to === tNodeId &&
@@ -716,7 +681,7 @@ export default {
         }
       }
       // 与原来的相比
-      let diff = warr.filter(function(val) {
+      let diff = warr.filter(function (val) {
         return kgBe.indexOf(val) === -1;
       });
       if (diff) {
@@ -762,13 +727,30 @@ export default {
         uploadData.push(tempcon);
         uploadData.push(temprel);
 
-        diff.forEach(element => {
+        diff.forEach((element) => {
           uploadData.push(element);
         });
       }
+      if(this.selectKGDBName==""){
+        this.$q.notify({
+        message: `请先选择课程`,
+        color: "warning",
+        icon: "sentiment_satisfied_alt",
+        position: "bottom",
+        timeout: 500,
+      });
+      return
+      }
       let res = await submitKgCode({
-        dbname: this.selectKGDBName,
+        dbname: "KG_" + this.selectKGDBName,
         seqs: uploadData,
+      });
+      this.$q.notify({
+        message: `上传成功`,
+        color: "positive",
+        icon: "sentiment_satisfied_alt",
+        position: "bottom",
+        timeout: 500,
       });
     },
     // 过滤出单独节点
@@ -800,9 +782,9 @@ export default {
         // });
         // 添加库关联的课程名库
         let info = await addADBInfoInter({
-          dbname: "KG_" + "cid",
+          dbname: "KG_" + "302012",
           cname: this.addKGDBName,
-          cid: "202111271303",
+          cid: this.selectKGDBName,
         });
         this.$q.notify({
           message: `添加成功！`,
@@ -816,7 +798,7 @@ export default {
     // 模糊匹配
     async matchSearchByStr() {
       let res = await matchSearch({
-        dbname: "DBANME",
+        dbname: "KG_" + "302012",
         headword: this.searchTerm,
         type: "con",
       });
@@ -828,8 +810,9 @@ export default {
         // name: "DBNAME",
         name: selectKGDBName,
         // 输入cid
-        cid: "202111271003",
+        cid: "302012",
       });
+      console.log(res);
       // 不存在
       if (res.data.data === null) {
         // 添加
@@ -850,13 +833,6 @@ export default {
         edges: [],
       },
     });
-    // 初始化图谱数据库名称
-    let res = await findAllDBNameAndCName();
-    let info = res.data.data;
-    for (let i = 0; i < info.length; i++) {
-      const item = info[i];
-      this.DBList.push(item.course.name);
-    }
   },
 };
 </script>

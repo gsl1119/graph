@@ -1,12 +1,29 @@
-import { login } from "../../api/common/graph";
-import { setToken, removeToken } from "../../utils/auth";
+import {
+  login
+} from "../../api/common/graph";
+import {
+  setToken,
+  removeToken
+} from "../../utils/auth";
 
-export function userLogin({ commit }, userInfo) {
-  const { username, password } = userInfo;
+export function userLogin({
+  commit
+}, userInfo) {
+  const {
+    username,
+    password
+  } = userInfo;
+  let userName = username
+  let userPass = password
   return new Promise((resolve, reject) => {
-    login({ username, password })
+    login({
+        userName,
+        userPass
+      })
       .then(response => {
-        const { data } = response;
+        const {
+          data
+        } = response;
         console.log(data);
         commit("SET_NICKNAME", data.nickname);
         commit("SET_TOKEN", data.token);
@@ -20,7 +37,9 @@ export function userLogin({ commit }, userInfo) {
 }
 
 
-export function userLogout({ commit }, state) {
+export function userLogout({
+  commit
+}, state) {
   return new Promise((resolve, reject) => {
     removeToken();
     resolve();

@@ -1,11 +1,7 @@
 import axios from "axios";
 
-import {
-  Notify
-} from "quasar";
-
 export const request = axios.create({
-  baseURL: "http://39.104.151.240:5000/", // 线上服务地址
+  baseURL: "https://knowledge.darryllin.cn/", // 线上服务地址
   // baseURL: "http://anrunlu-test.com/",   // 后端测试地址
   // baseURL: "http://182.92.231.190:9000/",
   timeout: 150000
@@ -13,7 +9,7 @@ export const request = axios.create({
 export const requestGraph = axios.create({
   // baseURL: "http://47.105.219.223:8090",
   //  baseURL: "http://localhost:8888",
-   baseURL: "https://knowledge.darryllin.cn/",
+   baseURL: "http://101.43.7.172:8080",
    timeout: 50000
 });
 
